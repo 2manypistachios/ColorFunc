@@ -1,4 +1,5 @@
 import faunadb, { query } from 'faunadb';
+
 const { Map, Paginate, Match, Index, Lambda, Get, Var, Delete, Ref, Collection, Create } = query;
 
 const faunaClient = new faunadb.Client({ secret: process.env.FAUNA_SECRET, domain: 'db.us.fauna.com' });
@@ -53,13 +54,11 @@ const getSnippetById = async (id) => {
   snippet.id = snippet.ref.id;
   delete snippet.ref;
 
-  console.log("get snipped by id snippet: ", snippet, id)
   return snippet;
 };
 
 const deleteSnippet = async (id) => {
-  console.log("delete snipped id: ", id)
-  return await faunaClient.query(
+  return faunaClient.query(
     Delete(Ref(Collection('snippets'), id))
   );
 };

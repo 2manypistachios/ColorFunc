@@ -33,6 +33,7 @@ module.exports = {
     'no-plusplus': 'off',
     'import/no-unresolved': 'off', // Fails with module paths
     'import/extensions': 'off', // Fails with module paths
-    '@next/next/no-document-import-in-page': 'off' // Mistakenly Thinks I'm Breaking The Rule
+    '@next/next/no-document-import-in-page': 'off', // Mistakenly Thinks I'm Breaking The Rule
+    'no-restricted-syntax': 'off'
   },
 };
