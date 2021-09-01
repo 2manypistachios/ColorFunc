@@ -1,24 +1,17 @@
 import {
-  Heading,
-  Button,
   Box,
-  Stack,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   useRadioGroup,
   useRadio,
   VStack,
 
 } from "@chakra-ui/react"
 
+import { useRecoilState } from "recoil"
 import { colorTheory } from "@/utils/colors"
 
 import { colorSchemeState } from "../state"
-import { useRecoilState } from "recoil"
 
-export const RadioCard = (props) => {
+export const RadioCard = ({children, ...props}) => {
   const { getInputProps, getCheckboxProps } = useRadio(props)
 
   const input = getInputProps()
@@ -45,7 +38,7 @@ export const RadioCard = (props) => {
         px={5}
         py={3}
       >
-        {props.children}
+        {children}
       </Box>
     </Box>
   )

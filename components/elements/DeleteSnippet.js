@@ -5,14 +5,14 @@ export default function DeleteSnippet({id, snippetDeleted, ...props}) {
     try {
       await fetch('/api/snippets/delete', {
         method: 'DELETE',
-        body: JSON.stringify({ id: id }),
+        body: JSON.stringify({ id }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
       snippetDeleted();
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 

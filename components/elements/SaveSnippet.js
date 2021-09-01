@@ -1,12 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import { Button, Checkbox, FormControl, FormLabel, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Button, Checkbox, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 
-import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/state';
 import { useRecoilValue } from 'recoil';
+import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/state';
 
-export default function SnippetForm({ snippet, nickname }) {
+export default function SnippetForm({ nickname }) {
 
   const user = nickname;
   const startingColor = useRecoilValue(startingColorState).hex();
@@ -20,7 +19,6 @@ export default function SnippetForm({ snippet, nickname }) {
   const router = useRouter();
 
   const createSnippet = async (data) => {
-    console.log("SUBMIT FUNC")
     const { name, isPublic } = data;
     try {
       await fetch('/api/createSnippet', {
@@ -30,7 +28,7 @@ export default function SnippetForm({ snippet, nickname }) {
       })
       router.push('/');
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 

@@ -13,7 +13,7 @@ import theme from 'styles/theme';
 import GlobalStyle from 'styles/styles';
 import 'styles/css/nprogress.css';
 
-import Star from '@/elements/Star';
+// import Star from '@/elements/Star';
 import Footer from '@/modules/Footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());

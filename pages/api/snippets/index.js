@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     const snippets = await getPublicSnippets()
     return res.status(200).json(snippets)
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ msg: 'Something went wrong.' });
+    return res.status(500).json(err);
   }
 }

@@ -1,8 +1,6 @@
 import { derivative } from 'mathjs';
 
-import { Heading } from "@chakra-ui/react"
-
-import {
+import { Heading ,
   Input,
   NumberInput,
   NumberInputField,
@@ -11,12 +9,13 @@ import {
   NumberDecrementStepper,
   FormControl,
   FormLabel,
-  FormErrorMessage,
   FormHelperText,
 } from "@chakra-ui/react"
 
-import { loopState, brightFuncState, satFuncState } from "../state"; 
+
+
 import { useRecoilState } from "recoil";
+import { loopState, brightFuncState, satFuncState } from "../state"; 
 
 export default function Shades() {
   return (
@@ -49,12 +48,13 @@ const FormLoop = () => {
 }
 
 const FormBright = () => {
+  let brightSlope;
   const [brightFunc, setBrightFunc] = useRecoilState(brightFuncState);
 
   try {
-    var brightSlope = `Each step darkens by: ${derivative(brightFunc, "x").toString()}%`
+    brightSlope = `Each step darkens by: ${derivative(brightFunc, "x").toString()}%`
   } catch (err) {
-    var brightSlope = err.toString();
+    brightSlope = err.toString();
   }
 
   return (
@@ -67,12 +67,13 @@ const FormBright = () => {
 }
 
 const FormSat = () => {
+  let satSlope;
   const [satFunc, setSatFunc] = useRecoilState(satFuncState);
 
   try {
-    var satSlope = `Each step saturates by: ${derivative(satFunc, "x").toString()}%`
+    satSlope = `Each step saturates by: ${derivative(satFunc, "x").toString()}%`
   } catch (err) {
-    var satSlope = err.toString();
+    satSlope = err.toString();
   }
 
   return (

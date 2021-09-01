@@ -11,7 +11,7 @@ const Saved = () => {
   const { user } = useUser();
   return (
     <>
-      {user ? <UserPanel nickname={user.nickname} />
+      {Object.prototype.hasOwnProperty.call(user,'nickname') ? <UserPanel nickname={user.nickname} />
         : <AuthLogin />
       }
     </>
@@ -20,10 +20,8 @@ const Saved = () => {
 
 export default Saved
 
-
+const fetcher = (url) => fetch(url).then((res) => res.json())
 const UserPanel = ({ nickname }) => {
-  if (!nickname) return;
-  const fetcher = (url) => fetch(url).then((res) => res.json())
   const { data: snippets, mutate } = useSWR(`/api/snippets/${nickname}`, fetcher)
 
   return (

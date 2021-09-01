@@ -1,4 +1,4 @@
-import { HStack, Link, Text, useColorMode } from '@chakra-ui/react';
+import { HStack, Link, useColorMode } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 
 const Star = () => {

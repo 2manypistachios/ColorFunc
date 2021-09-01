@@ -1,25 +1,21 @@
-const Color = require('color');
+// import ErrorBoundary from "@/elements/ErrorBoundary"
+// import Wrapper from "@/layouts/Wrapper"
+import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
 
-import { useState, useEffect } from "react"
+import { useRecoilValue } from "recoil";
+import { huesState, loopState, brightFuncState, satFuncState } from "@/components/state";
 
-import { Flex, Box, Heading, Text, Wrap, WrapItem, Center } from "@chakra-ui/react"
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
-
-import ErrorBoundary from "@/elements/ErrorBoundary"
-import ColorList from "@/elements/ColorList"
 import PageContainer from "@/layouts/PageContainer"
-import Wrapper from "@/layouts/Wrapper"
-
+import ColorList from "@/elements/ColorList"
 import JsonAccordion from "@/modules/JsonAccordion"
 import Shades from "@/modules/Shades"
+
 import Hues from "@/modules/Hue"
 import Saved from "@/modules/Saved"
 import Actions from "@/modules/Actions"
-
 import { genShades } from "@/utils/colors"
 
-import { useRecoilState, useRecoilValue } from "recoil";
-import { huesState, loopState, brightFuncState, satFuncState } from "@/components/state";
+
 
 export default function ColorPage() {
   const hues = useRecoilValue(huesState)

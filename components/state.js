@@ -1,6 +1,7 @@
-const { atom, selector, selectorFamily } = require("recoil")
+import { genHues } from "@/utils/colors";
+
+const { atom, selector } = require("recoil")
 const Color = require('color');
-import { genHues, genShades } from "@/utils/colors";
 
 const startingColorState = atom({
   key: 'primaryState',

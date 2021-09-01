@@ -1,4 +1,4 @@
-import { Heading, useColorMode, Center, VStack, Box } from '@chakra-ui/react';
+import { Heading, useColorMode, VStack, Box } from '@chakra-ui/react';
 
 const PageContainer = ({ children, title }) => {
   const { colorMode } = useColorMode();

@@ -1,7 +1,7 @@
+import { Heading, Box } from '@chakra-ui/react';
 import PageContainer from '@/layouts/PageContainer';
 import Actions from '@/modules/Actions';
 
-import { Heading, Box } from '@chakra-ui/react';
 
 export default function Home() {
   return (

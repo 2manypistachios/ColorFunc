@@ -5,11 +5,13 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ msg: "Only POST allowed." });
-  } try {
+  }
+
+  try {
     const createdSnippet = await createSnippet({ user, isPublic, startingColor, colorScheme, loop, brightFunc, satFunc, name });
     return res.status(200).json(createdSnippet)
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: 'Something went wrong.' });
+    // console.error(err);
+    return res.status(500).json({ msg: 'Something went wrong.' });
   }
 }

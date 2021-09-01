@@ -31,5 +31,8 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     '@next/next/no-page-custom-font': 'off',
     'no-plusplus': 'off',
+    'import/no-unresolved': 'off', // Fails with module paths
+    'import/extensions': 'off', // Fails with module paths
+    '@next/next/no-document-import-in-page': 'off' // Mistakenly Thinks I'm Breaking The Rule
   },
 };

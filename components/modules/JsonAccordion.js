@@ -4,16 +4,16 @@ export default function JsonAccordion({ subColors }) {
   // See https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
   function replacer(key, val) {
     if (val instanceof Map) {
-      let returnObj = {}
+      const returnObj = {}
 
       for (const [mapKey, mapVal] of val) {
         returnObj[mapKey] = mapVal.hex
       }
 
       return returnObj;
-    } else {
+    } 
       return val;
-    }
+    
   }
 
   return (

@@ -3,8 +3,7 @@ import { Box, Heading, Text, Wrap, Center } from "@chakra-ui/react"
 import Wrapper from "@/layouts/Wrapper"
 
 
-const ColorList = ({ subColors }) => {
-  return (
+const ColorList = ({ subColors }) => (
     <>
       {Object.keys(subColors).map((colorGroup) => (
         <Box key={colorGroup} w="100%">
@@ -18,10 +17,8 @@ const ColorList = ({ subColors }) => {
       ))}
     </>
   )
-}
 
-const ColorBox = (({ color, id }) => {
-  return (
+const ColorBox = (({ color, id }) => (
     <>
       <Center flexDirection="column" bg={color.hex} w="200px" h="200px">
         <Heading size="sm">{color.hex}</Heading>
@@ -29,7 +26,6 @@ const ColorBox = (({ color, id }) => {
         <Text>{JSON.stringify(color.hsl)}</Text>
       </Center>
     </>
-  )
-})
+  ))
 
 export default ColorList;
