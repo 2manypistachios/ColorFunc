@@ -10,4 +10,4 @@ This project is under [MIT License](LICENSE)
 
 ## Credits
 
-&copy; 2021 Created by [Hendra Agil](https://github.com/2manypistachios)
+&copy; 2021 Created by [Max Pod](https://github.com/2manypistachios)
