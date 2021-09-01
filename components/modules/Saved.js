@@ -11,7 +11,7 @@ const Saved = () => {
   const { user } = useUser();
   return (
     <>
-      {Object.prototype.hasOwnProperty.call(user,'nickname') ? <UserPanel nickname={user.nickname} />
+      { (user && Object.prototype.hasOwnProperty.call(user,'nickname')) ? <UserPanel nickname={user.nickname} />
         : <AuthLogin />
       }
     </>
