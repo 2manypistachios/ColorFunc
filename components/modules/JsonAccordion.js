@@ -13,7 +13,6 @@ export default function JsonAccordion({ subColors }) {
       return returnObj;
     } 
       return val;
-    
   }
 
   return (
