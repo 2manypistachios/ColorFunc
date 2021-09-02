@@ -1,7 +1,7 @@
-const title = 'Next.js Chakra Starter | Hendra Agil';
+const title = 'ColofFunc | Max Pod';
 const description =
-  'An opinionated starter project with Next.js and Chakra UI. Created by hendraaagil';
-const url = 'https://nextjs-chakra-hendraaagil.vercel.app';
+  'A Ridiculously Flexible Palette Generator';
+const url = 'https://color-func.vercel.app/';
 
 const SEO = {
   title,
