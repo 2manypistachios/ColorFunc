@@ -1,4 +1,4 @@
-const title = 'ColofFunc | Max Pod';
+const title = 'ColorFunc | Max Pod';
 const description =
   'A Ridiculously Flexible Palette Generator';
 const url = 'https://color-func.vercel.app/';
@@ -23,8 +23,8 @@ const SEO = {
   },
   twitter: {
     cardType: 'summary_large_image',
-    handle: '@hendraaagil',
-    site: '@hendraaagil',
+    handle: '@2manypistachios',
+    site: '@2manypistachios',
   },
   additionalLinkTags: [{ rel: 'icon', href: '/favicon.ico' }],
 };

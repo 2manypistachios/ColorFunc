@@ -8,11 +8,6 @@ const GlobalStyle = ({ children }) => (
           scoll-behavior: smooth;
           cursor: default;
         }
-        #__next {
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-        }
 
         @font-face {
           font-family: "Brant";
