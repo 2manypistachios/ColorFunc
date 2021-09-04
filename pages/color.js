@@ -1,6 +1,6 @@
 // import ErrorBoundary from "@/elements/ErrorBoundary"
 // import Wrapper from "@/layouts/Wrapper"
-import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
+import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Grid } from "@chakra-ui/react"
 
 import { useRecoilValue } from "recoil";
 import { huesState, loopState, brightFuncState, satFuncState } from "@/components/state";
@@ -27,7 +27,9 @@ export default function ColorPage() {
 
   return (
       <PageContainer title="C/F">
-      <Actions switchName="Home" />
+        <Grid flex="1" w="100%" justifyContent="center" alignItems="baseline">
+          <Actions switchName="Home" />
+        </Grid>
       <Flex pt="100px">
         <Flex pos="sticky" top="0px" w="40%" display="grid" align="center" justify="center" flex="4" alignSelf="start">
           <Tabs>

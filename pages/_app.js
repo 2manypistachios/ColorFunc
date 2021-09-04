@@ -12,6 +12,7 @@ import SEO from 'next-seo.config';
 import theme from 'styles/theme';
 import GlobalStyle from 'styles/styles';
 import 'styles/css/nprogress.css';
+import Footer from '@/components/modules/Footer';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -43,6 +44,7 @@ function MyApp({ Component, pageProps, router }) {
                 }}
               >
                 <Component {...pageProps} />
+                <Footer/>
               </MotionBox>
             </AnimatePresence>
           </GlobalStyle>

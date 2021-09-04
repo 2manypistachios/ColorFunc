@@ -9,6 +9,11 @@ const GlobalStyle = ({ children }) => (
           cursor: default;
         }
 
+        #__next {
+          position: relative;
+          min-height: 100vh;
+        }
+
         @font-face {
           font-family: "Brant";
           src: url("/fonts/Brant.woff") format("woff");
