@@ -1,5 +1,4 @@
-import { compile, factorial } from 'mathjs';
-import { FaCommentsDollar } from 'react-icons/fa';
+import { compile } from 'mathjs';
 
 const Color = require('color');
 
@@ -17,7 +16,7 @@ const EnglishIsCool = [
 ]
 
 function harmonize(color, start, end, interval) {
-  let dict = {};
+  const dict = {};
   const primary = Color(color);
   dict[EnglishIsCool[0]] = primary
 
@@ -26,11 +25,8 @@ function harmonize(color, start, end, interval) {
   let counter = 0;
   for (let i = start; i <= end; i += interval) {
     dict[EnglishIsCool[counter + 1]] = primary.rotate(i)
-    //console.log(`adding new key ${EnglishIsCool[counter+1]}`)
     counter++
   }
-
-  //console.log(`wtf dict ${dict}`, dict)
   return dict
 }
 
@@ -65,16 +61,15 @@ export const colorTheory = {
   }
 }
 
-const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
+// const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
 
 const combinations = (list) => {
-  var set = [],
+  const set = [],
     listSize = list.length
-  //combinationsCount = binomialCoeff(list.length-1),
+  // const combinationsCount = binomialCoeff(list.length-1),
 
-  for (var x = 0; x < listSize; x++) {
-    for (var y = x + 1; y < listSize; y++) {
-      //console.log(`${list[x]} - ${list[y]}`)
+  for (let x = 0; x < listSize; x++) {
+    for (let y = x + 1; y < listSize; y++) {
       set.push([list[x], list[y]])
     }
   }
@@ -82,20 +77,20 @@ const combinations = (list) => {
 }
 
 export const genShades = (dict, { loop, brightFunc, satFunc }) => {
+  let brightness, saturation, shades = {};
+
   try {
-    var brightness = compile(brightFunc);
+    brightness = compile(brightFunc);
   } catch (err) {
-    var brightness = compile("x")
+    brightness = compile("x")
   }
 
   try {
-    var saturation = compile(satFunc);
+    saturation = compile(satFunc);
   } catch (err) {
-    var saturation = compile("x")
+    saturation = compile("x")
   }
 
-  let shades = {};
-  //console.log("dict", dict)
   Object.keys(dict).forEach(key => shades[key] = new Map());
 
   for (let [key, val] of Object.entries(dict)) {
@@ -127,10 +122,10 @@ export const genShades = (dict, { loop, brightFunc, satFunc }) => {
 }
 
 export const genMixes = (dict, { loop }) => {
-  let mixes = {}
+  const mixes = {}
 
-  combinations(Object.keys(dict)).map(([a, b]) => {
-    let mix = [];
+  combinations(Object.keys(dict)).forEach(([a, b]) => {
+    const mix = [];
     for (let i = 0; i < loop; i++) {
       mix.push(dict[a].mix(dict[b], (loop - i) / i))
     }
@@ -155,7 +150,7 @@ export const genHues = ({ colorScheme, startingColor }) => {
   return hues;
 }
 
-export const colorGen = ({colorScheme, startingColor, brightFunc, satFunc, loop}) => {
+export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop }) => {
   const hues = genHues({ colorScheme, startingColor });
   const shades = genShades(hues, { loop, brightFunc, satFunc })
   return shades;
