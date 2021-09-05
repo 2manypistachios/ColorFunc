@@ -27,7 +27,7 @@ export default function ColorPage() {
 
   return (
       <PageContainer title="C/F">
-        <Grid flex="1" w="100%" justifyContent="center" alignItems="baseline">
+        <Grid flex="1" w="100%" py="33px" justifyContent="center" alignItems="baseline">
           <Actions switchName="Home" />
         </Grid>
       <Flex pt="100px">
