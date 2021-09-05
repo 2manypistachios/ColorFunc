@@ -25,7 +25,12 @@ const brightFuncState = atom({
 
 const satFuncState = atom({
   key: 'satFuncState',
-  default: 'abs(x+3) * 20'
+  default: 'abs(x-1) * 10'
+})
+
+const idFuncState = atom({
+  key: 'satFuncState',
+  default: 'abs(x-1) * 10'
 })
 
 const huesState = selector({
