@@ -9,7 +9,7 @@ const ColorList = ({ subColors }) => (
         <Box key={colorGroup} w="100%">
           <Wrapper y="0-0" className="wrapper">
             <Heading fontWeight="900" my="1em" textTransform="capitalize" textAlign={["center", "left"]}>{colorGroup}</Heading>
-            <Wrap justify={["center", "left"]}>
+            <Wrap justify={["center", "left"]} className="text">
               {[...subColors[colorGroup]].map(([key, val]) => <ColorBox color={val} id={key} key={key} />)}
             </Wrap>
           </Wrapper>
@@ -19,8 +19,8 @@ const ColorList = ({ subColors }) => (
   )
 
 const ColorBox = (({ color, id }) => (
-    <WrapItem>
-      <Square flexDirection="column" bg={color.hex} size={["25vw", "200px"]}>
+    <WrapItem className="text">
+      <Square flexDirection="column" bg={color.hex} size={["25vw"]} maxH="200px" maxW="200px">
         <Heading size="sm">{color.hex}</Heading>
         <Heading size="sm">{id}</Heading>
         <Text>{JSON.stringify(color.hsl)}</Text>

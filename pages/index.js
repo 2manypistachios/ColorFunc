@@ -12,7 +12,7 @@ export default function Home() {
             <Heading fontFamily="Coves" as="h1" fontSize={["10rem", "10rem", "23rem"]} my={10} textShadow="0px 0px var(--chakra-colors-blackAlpha-300)">
               Color
             </Heading>
-            <Box pos="absolute" display="inline-block" bottom={["0px"]} left="30%">
+            <Box pos="absolute" display="inline-block" bottom={["20px","20px","0px"]} left="30%">
               <Heading
                 fontFamily="Brant" as="h1" fontSize={["5rem", "5rem", "10rem"]}
                 color='blackAlpha.800'
