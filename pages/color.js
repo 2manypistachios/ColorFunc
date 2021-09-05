@@ -26,13 +26,13 @@ export default function ColorPage() {
   const subColors = genShades(hues, { loop, brightFunc, satFunc })
 
   return (
-      <PageContainer title="C/F">
-        <Grid flex="1" w="100%" py="33px" justifyContent="center" alignItems="baseline">
-          <Actions switchName="Home" />
-        </Grid>
-      <Flex pt="100px">
-        <Flex pos="sticky" top="0px" w="40%" display="grid" align="center" justify="center" flex="4" alignSelf="start">
-          <Tabs>
+    <PageContainer title="C/F" minH="100vh">
+      <Grid flex="1" w="100%" py="33px" justifyContent="center" alignItems="baseline">
+        <Actions switchName="Home" />
+      </Grid>
+      <Flex pt="100px" wrap="wrap">
+        <Flex pos="relative" top="0px" minW="400px" display="grid" align="center" justify="center" flex="2" alignSelf="start">
+          <Tabs w="300px">
             <TabList>
               <Tab>Hue</Tab>
               <Tab>Shades</Tab>
@@ -42,10 +42,10 @@ export default function ColorPage() {
 
             <TabPanels>
               <TabPanel>
-                <Hues/>
+                <Hues />
               </TabPanel>
               <TabPanel>
-                <Shades/>
+                <Shades />
               </TabPanel>
               <TabPanel>
                 <JsonAccordion subColors={subColors} />
@@ -57,11 +57,11 @@ export default function ColorPage() {
           </Tabs>
         </Flex>
 
-        <Box flex="6">
+        <Box flex="3">
           <ColorList subColors={subColors} />
         </Box>
       </Flex>
-      </PageContainer>
+    </PageContainer>
   )
 }
 

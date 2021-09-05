@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Wrap, Center } from "@chakra-ui/react"
+import { Box, Heading, Text, Wrap, WrapItem, Square } from "@chakra-ui/react"
 
 import Wrapper from "@/layouts/Wrapper"
 
@@ -7,9 +7,9 @@ const ColorList = ({ subColors }) => (
     <>
       {Object.keys(subColors).map((colorGroup) => (
         <Box key={colorGroup} w="100%">
-          <Wrapper y="0-0">
-            <Heading fontWeight="900" my="1em" textTransform="capitalize">{colorGroup}</Heading>
-            <Wrap>
+          <Wrapper y="0-0" className="wrapper">
+            <Heading fontWeight="900" my="1em" textTransform="capitalize" textAlign={["center", "left"]}>{colorGroup}</Heading>
+            <Wrap justify={["center", "left"]}>
               {[...subColors[colorGroup]].map(([key, val]) => <ColorBox color={val} id={key} key={key} />)}
             </Wrap>
           </Wrapper>
@@ -19,13 +19,13 @@ const ColorList = ({ subColors }) => (
   )
 
 const ColorBox = (({ color, id }) => (
-    <>
-      <Center flexDirection="column" bg={color.hex} w="200px" h="200px">
+    <WrapItem>
+      <Square flexDirection="column" bg={color.hex} size={["25vw", "200px"]}>
         <Heading size="sm">{color.hex}</Heading>
         <Heading size="sm">{id}</Heading>
         <Text>{JSON.stringify(color.hsl)}</Text>
-      </Center>
-    </>
+      </Square>
+    </WrapItem>
   ))
 
 export default ColorList;
