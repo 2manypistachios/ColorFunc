@@ -1,6 +1,8 @@
 ![image](https://user-images.githubusercontent.com/33584960/132153195-0741b0bb-6a27-4574-8fd6-bb22ed491ec2.png)
 
 Preview: https://color-func.vercel.app/
+
+Writeup: https://2manypistachios.hashnode.dev/introducing-colorfunc
 # ColorFunc
 An extremely flexible pallette generator.
 
@@ -10,7 +12,6 @@ Motivation:
 
 https://tailwindcss.com/docs/customizing-colors
 
-See Writeup on Hashnode: https://2manypistachios.hashnode.dev/introducing-colorfunc
 
 ## Project Structure Extends Default Next.js Structure.
 /utils.color.js is the code for color generation on which the UI is built on.
