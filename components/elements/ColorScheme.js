@@ -47,7 +47,7 @@ export const RadioCard = ({children, ...props}) => {
 export default function ColorTypes() {
   const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState)
 
-  const options = [...Object.keys(colorTheory), "Custom"]
+  const options = [...Object.keys(colorTheory),]
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "colorScheme",

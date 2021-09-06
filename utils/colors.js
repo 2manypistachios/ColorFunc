@@ -1,8 +1,8 @@
-import { compile } from 'mathjs';
+import { compile } from 'mathjs'; // Compile allows us to parse strings as mathematical expressions
+const Color = require('color');  // Color is a simple parsing library that allows us to create a color Object which can convert from hex to hsl.
 
-const Color = require('color');
-
-const EnglishIsCool = [
+//-- List for English Naming Structure --
+const EnglishIsCool = [ 
   "Primary",
   "Secondary",
   "Tertiary",
@@ -15,6 +15,7 @@ const EnglishIsCool = [
   "Denary"
 ]
 
+//-- Builder-Function To Create Hues --
 function harmonize(color, start, end, interval) {
   const dict = {};
   const primary = Color(color);
@@ -30,6 +31,7 @@ function harmonize(color, start, end, interval) {
   return dict
 }
 
+//-- Predefined Hue Functions --
 const mono = (primary) => harmonize(primary, 0, 0, 0)
 const complement = (primary) => harmonize(primary, 180, 180, 1)
 const split = (primary) => harmonize(primary, 150, 210, 60)
@@ -37,45 +39,23 @@ const triad = (primary) => harmonize(primary, 120, 240, 120)
 const tetrad = (primary) => harmonize(primary, 90, 270, 90)
 const analogous = (primary) => harmonize(primary, 30, 90, 30)
 
-export const colorTheory = {
-  "Monochromatic": {
-    "colors": mono,
-    "desc": "Monochromatic color schemes are formed using various tones and shades of one single color."
-  },
-  "Analogous": {
-    "colors": analogous,
-    "desc": "An analogous color scheme is formed of three colors that are located next to each other on the color wheel. Analogous color palettes are commonly used when no contrast is needed—for example, on the background of web pages or banners."
-  },
-  "Complementary": {
-    "colors": complement,
-    "desc": "Complementary color palettes are comprised of colors that are placed in front of each other on the color wheel. While the name may suggest otherwise, complementary color palettes are actually the opposite of analogous and monochromatic color palettes, as they aim to produce contrast. For example, a red button on a blue background will stand out on any interface."
-  },
-  "Split": {
-    "colors": split
-  },
-  "Triadic": {
-    "colors": triad
-  },
-  "Tetrad": {
-    "colors": tetrad,
+
+//-- Generate Hues --
+export const genHues = ({ colorScheme, startingColor }) => {
+  let hues
+  switch (colorScheme) {
+    default: hues = mono(startingColor); break
+    case 'Monochromatic': hues = mono(startingColor); break
+    case 'Analogous': hues = analogous(startingColor); break
+    case 'Complementary': hues = complement(startingColor); break
+    case 'Split': hues = split(startingColor); break
+    case 'Triadic': hues = triad(startingColor); break
+    case 'Tetrad': hues = tetrad(startingColor); break
   }
+  return hues;
 }
 
-// const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
-
-const combinations = (list) => {
-  const set = [],
-    listSize = list.length
-  // const combinationsCount = binomialCoeff(list.length-1),
-
-  for (let x = 0; x < listSize; x++) {
-    for (let y = x + 1; y < listSize; y++) {
-      set.push([list[x], list[y]])
-    }
-  }
-  return set;
-}
-
+//-- Generate Shades --
 export const genShades = (dict, { loop, brightFunc, satFunc }) => {
   let brightness, saturation, shades = {};
 
@@ -121,6 +101,66 @@ export const genShades = (dict, { loop, brightFunc, satFunc }) => {
   return shades;
 }
 
+//-- Combines Functions genHues and genShades --
+export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop }) => {
+  const hues = genHues({ colorScheme, startingColor });
+  const shades = genShades(hues, { loop, brightFunc, satFunc })
+  return shades;
+}
+
+
+
+//*** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
+
+// Intended to use as a datastore to provide tooltips, currently unused.
+/*
+export const colorTheory = {
+  "Monochromatic": {
+    "colors": mono,
+    "desc": "Monochromatic color schemes are formed using various tones and shades of one single color."
+  },
+  "Analogous": {
+    "colors": analogous,
+    "desc": "An analogous color scheme is formed of three colors that are located next to each other on the color wheel. Analogous color palettes are commonly used when no contrast is needed—for example, on the background of web pages or banners."
+  },
+  "Complementary": {
+    "colors": complement,
+    "desc": "Complementary color palettes are comprised of colors that are placed in front of each other on the color wheel. While the name may suggest otherwise, complementary color palettes are actually the opposite of analogous and monochromatic color palettes, as they aim to produce contrast. For example, a red button on a blue background will stand out on any interface."
+  },
+  "Split": {
+    "colors": split
+  },
+  "Triadic": {
+    "colors": triad
+  },
+  "Tetrad": {
+    "colors": tetrad,
+  }
+}
+*/
+
+
+// const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
+
+
+// Unused Combination Generation for mixing colors together
+/*
+const combinations = (list) => {
+  const set = [],
+    listSize = list.length
+  // const combinationsCount = binomialCoeff(list.length-1),
+
+  for (let x = 0; x < listSize; x++) {
+    for (let y = x + 1; y < listSize; y++) {
+      set.push([list[x], list[y]])
+    }
+  }
+  return set;
+}
+*/
+
+// Unfinished Mix Generation
+/*
 export const genMixes = (dict, { loop }) => {
   const mixes = {}
 
@@ -134,24 +174,4 @@ export const genMixes = (dict, { loop }) => {
 
   return mixes;
 }
-
-
-export const genHues = ({ colorScheme, startingColor }) => {
-  let hues
-  switch (colorScheme) {
-    default: hues = mono(startingColor); break
-    case 'Monochromatic': hues = mono(startingColor); break
-    case 'Analogous': hues = analogous(startingColor); break
-    case 'Complementary': hues = complement(startingColor); break
-    case 'Split': hues = split(startingColor); break
-    case 'Triadic': hues = triad(startingColor); break
-    case 'Tetrad': hues = tetrad(startingColor); break
-  }
-  return hues;
-}
-
-export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop }) => {
-  const hues = genHues({ colorScheme, startingColor });
-  const shades = genShades(hues, { loop, brightFunc, satFunc })
-  return shades;
-}
+*/

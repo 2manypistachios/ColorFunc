@@ -12,7 +12,7 @@ import { huesState, startingColorState } from "../state"
 const Hues = () => {
   const [startingColor, setStartingColor] = useRecoilState(startingColorState)
   const hues = useRecoilValue(huesState)
-  
+
   return (
     <>
       <Heading mb="1.2em">Primary Color</Heading>
@@ -24,20 +24,20 @@ const Hues = () => {
 
 /*
 const CustomHues = (props) => (
-    <FormControl id="color-picker" display="flex" flexDirection="column">
-      <FormLabel>Custom Hues</FormLabel>
-      <Input placeHolder="weee" />
-      <FormHelperText mb="1.2em">Will generate some stuff shades</FormHelperText>
-    </FormControl>
-  )
+  <FormControl id="color-picker" display="flex" flexDirection="column">
+    <FormLabel>Custom Hues</FormLabel>
+    <Input placeHolder="weee" />
+    <FormHelperText mb="1.2em">Put in color hexes seperated by commas.</FormHelperText>
+  </FormControl>
+)
 
 const CustomScheme = (props) => (
-    <FormControl id="color-picker" display="flex" flexDirection="column">
-      <FormLabel>Custom Scheme Function</FormLabel>
-      <Input placeHolder="weee" />
-      <FormHelperText mb="1.2em">Will generate some stuff shades</FormHelperText>
-    </FormControl>
-  )
-  */
+  <FormControl id="color-picker" display="flex" flexDirection="column">
+    <FormLabel>Custom Scheme Function</FormLabel>
+    <Input placeHolder="weee" />
+    <FormHelperText mb="1.2em">Will generate some stuff shades</FormHelperText>
+  </FormControl>
+)
+*/
 
 export default Hues;
