@@ -16,10 +16,14 @@ See Writeup on Hashnode: https://2manypistachios.hashnode.dev/introducing-colorf
 /utils.color.js is the code for color generation on which the UI is built on.
 
 ## Points of Interest:
-/components/elements: Reusable components with limited if any logic
-/components/modules: Reusable components with extensive logic
+/components/elements: Low-level components with limited if any logic
+
+/components/modules: High-level components with extensive logic
+
 /components/layouts: Wrappers
-/components/state.js: All project states written in recoil.js 
+
+/components/state.js: All project states written for recoil.js 
+
 /utils.Fauna.js: The database methods used for the project called in the API routes.
 
 ## License
