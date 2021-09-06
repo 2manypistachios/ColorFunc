@@ -26,6 +26,17 @@ See Writeup on Hashnode: https://2manypistachios.hashnode.dev/introducing-colorf
 
 /utils.Fauna.js: The database methods used for the project called in the API routes.
 
+## Todos:
+- Fire the monkey that coded this
+- Counsel the rubber ducky forced to witness this monstrosity
+- Add user-generated presets to frontpage
+- Add interactivity to frontpage
+- Add ability to use custom hues
+- Add ability to create custom themes for hues
+- Add help function with presets for all math-color functions
+- Add improvements to ColorBox to give more info on hover
+- Remove ES6 Map from /utils/color.js and refractor project
+
 ## License
 
 This project is under [MIT License](LICENSE)
