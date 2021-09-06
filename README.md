@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/33584960/131622695-5a7b1fa9-4ed5-4833-8531-6cc852c0a2d4.png)
+![image](https://user-images.githubusercontent.com/33584960/132153195-0741b0bb-6a27-4574-8fd6-bb22ed491ec2.png)
+Preview: https://color-func.vercel.app/
 # ColorFunc
 An extremely flexible pallette generator.
 
