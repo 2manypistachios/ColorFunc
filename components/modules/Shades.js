@@ -15,7 +15,7 @@ import { Heading ,
 
 
 import { useRecoilState } from "recoil";
-import { loopState, brightFuncState, satFuncState } from "../state"; 
+import { loopState, brightFuncState, satFuncState } from "../store/state"; 
 
 export default function Shades() {
   return (

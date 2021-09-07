@@ -15,7 +15,7 @@ const EnglishIsCool = [
   "Denary"
 ]
 
-//-- Builder-Function To Create Hues --
+//-- Builder-Func To Create Hues --
 function harmonize(color, start, end, interval) {
   const dict = {};
   const primary = Color(color);
@@ -109,11 +109,7 @@ export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop
 }
 
 
-
-//*** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
-
-// Intended to use as a datastore to provide tooltips, currently unused.
-/*
+//-- Intended to use as a datastore to provide tooltips, currently unused.
 export const colorTheory = {
   "Monochromatic": {
     "colors": mono,
@@ -137,7 +133,11 @@ export const colorTheory = {
     "colors": tetrad,
   }
 }
-*/
+
+
+//*** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
+
+
 
 
 // const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }

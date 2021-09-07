@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Checkbox, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 
 import { useRecoilValue } from 'recoil';
-import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/state';
+import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/store/state';
 
 export default function SnippetForm({ nickname }) {
 

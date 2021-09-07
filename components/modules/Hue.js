@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import Color from "color"
 import ColorScheme from "@/elements/ColorScheme"
 
-import { huesState, startingColorState } from "../state"
+import { huesState, startingColorState } from "../store/state"
 
 
 const Hues = () => {

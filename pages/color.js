@@ -3,7 +3,7 @@
 import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Grid } from "@chakra-ui/react"
 
 import { useRecoilValue } from "recoil";
-import { huesState, loopState, brightFuncState, satFuncState } from "@/components/state";
+import { huesState, loopState, brightFuncState, satFuncState } from "@/components/store/state";
 
 import PageContainer from "@/layouts/PageContainer"
 import ColorList from "@/elements/ColorList"

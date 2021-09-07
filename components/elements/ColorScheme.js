@@ -6,10 +6,50 @@ import {
 
 } from "@chakra-ui/react"
 
-import { useRecoilState } from "recoil"
 import { colorTheory } from "@/utils/colors"
 
-import { colorSchemeState } from "../state"
+// Todo: Remove Recoil
+import { useRecoilState } from "recoil"
+import { colorSchemeState } from "../store/state"
+
+import useStore from "@/store/useStore"
+import shallow from 'zustand/shallow'
+
+export default function ColorTypes() {
+  const [scheme, setScheme] = useStore(state => [state.scheme, state.setScheme], shallow)
+
+  const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState)
+
+  const options = [...Object.keys(colorTheory),]
+
+  const tempFunc = (v) => {
+    setColorScheme(v);
+    setScheme(v);
+  }
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: "colorScheme",
+    value: colorScheme,
+    onChange: tempFunc,
+  })
+
+  const group = getRootProps()
+
+  return (
+    <Box mt="1rem">
+      <VStack {...group}>
+        {options.map((value) => {
+          const radio = getRadioProps({ value })
+          return (
+            <RadioCard key={value} {...radio}>
+              {value}
+            </RadioCard>
+          )
+        })}
+      </VStack>
+    </Box>
+  )
+}
 
 export const RadioCard = ({children, ...props}) => {
   const { getInputProps, getCheckboxProps } = useRadio(props)
@@ -40,35 +80,6 @@ export const RadioCard = ({children, ...props}) => {
       >
         {children}
       </Box>
-    </Box>
-  )
-}
-
-export default function ColorTypes() {
-  const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState)
-
-  const options = [...Object.keys(colorTheory),]
-
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "colorScheme",
-    value: colorScheme,
-    onChange: setColorScheme,
-  })
-
-  const group = getRootProps()
-
-  return (
-    <Box mt="1rem">
-      <VStack {...group}>
-        {options.map((value) => {
-          const radio = getRadioProps({ value })
-          return (
-            <RadioCard key={value} {...radio}>
-              {value}
-            </RadioCard>
-          )
-        })}
-      </VStack>
     </Box>
   )
 }

@@ -6,6 +6,7 @@
       "@/elements/*": ["components/elements/*"],
       "@/layouts/*": ["components/layouts/*"],
       "@/modules/*": ["components/modules/*"],
+      "@/store/*": ["components/store/*"],
       "@/utils/*": ["utils/*"]
     }
   }

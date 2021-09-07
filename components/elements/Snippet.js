@@ -4,7 +4,7 @@ import { TwitterPicker } from "react-color";
 import { useSetRecoilState } from "recoil";
 
 import Color from "color";
-import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/state';
+import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/store/state';
 import { colorGen } from "@/utils/colors";
 
 import DeleteSnippet from "@/elements/DeleteSnippet"
