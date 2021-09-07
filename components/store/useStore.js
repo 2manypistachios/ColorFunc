@@ -45,6 +45,7 @@ const useStore = create(
     id: 'x*100',
     setId: (id) => set(state => void(state.id = id)),
 
+    setHues: (hues) => set(state => void(state.hues = hues))
   }), {
   computed: {
     startingColor() {

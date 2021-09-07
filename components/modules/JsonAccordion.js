@@ -12,7 +12,7 @@ function jsonReplacer(key, val) {
   return val;
 }
 
-function cssReplacer(val, key) {
+function cssReplacer(val,) {
   if (val[1] instanceof Map) {
     let returnStr = ''
 
@@ -22,16 +22,17 @@ function cssReplacer(val, key) {
 
     return returnStr;
   }
+  return '';
 }
 
 export default function JsonAccordion({ subColors }) {
   // See https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
-  console.log('subcolors: ', subColors, )
+  // console.log('subcolors: ', subColors, )
   const cssVars = Object.entries(subColors).map(cssReplacer)
   return (
     <>
-      <Accord title="CSS Export" children={cssVars} />
-      <Accord title="JSON Export" children={JSON.stringify(subColors, jsonReplacer, " ")} />
+      <Accord title="CSS Export">{cssVars}</Accord>
+      <Accord title="JSON Export">{JSON.stringify(subColors, jsonReplacer, " ")}</Accord>
     </>
   )
 }
