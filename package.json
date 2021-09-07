@@ -20,7 +20,7 @@
     "@visx/text": "^2.1.0",
     "@visx/visx": "^2.1.0",
     "auth0": "^2.36.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "babel-plugin-superjson-next": "^0.3.1",
     "color": "^4.0.1",
     "d3": "^7.0.1",
@@ -39,7 +39,7 @@
     "react-hook-form": "^7.14.2",
     "react-icons": "^4.2.0",
     "react-spring": "^9.2.4",
-    "recoil": "^0.4.1",
+    "remove": "^0.1.5",
     "swr": "^1.0.0",
     "zustand": "^3.5.10",
     "zustand-store-addons": "^0.1.11"

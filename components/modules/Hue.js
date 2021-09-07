@@ -1,20 +1,10 @@
 import { Heading } from "@chakra-ui/react"
 import { SketchPicker } from "react-color"
 
-
-import { useRecoilState, useRecoilValue } from "recoil"
-import Color from "color"
 import ColorScheme from "@/elements/ColorScheme"
-
-import { huesState, startingColorState } from "../store/state"
-
 import useStore from "@/store/useStore"
 
 const Hues = () => {
-  // Todo: Remove Recoil
-  // const [startingColor, setStartingColor] = useRecoilState(startingColorState)
-  // const hues = useRecoilValue(huesState)
-
   const [hex, setHex, hues] = useStore('hex, setHex, hues')
 
   return (

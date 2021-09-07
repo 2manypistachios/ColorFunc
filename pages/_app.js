@@ -1,6 +1,5 @@
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import { RecoilRoot } from 'recoil';
 
 import { UserProvider } from "@auth0/nextjs-auth0";
 
@@ -23,33 +22,30 @@ const MotionBox = motion(Box);
 function MyApp({ Component, pageProps, router }) {
   return (
     <UserProvider>
+      <ChakraProvider resetCSS theme={theme}>
+        <DefaultSeo {...SEO} />
 
-      <RecoilRoot>
-        <ChakraProvider resetCSS theme={theme}>
-          <DefaultSeo {...SEO} />
-
-          <GlobalStyle>
-            <AnimatePresence exitBeforeEnter>
-              <MotionBox
-                key={router.route}
-                animate="enter"
-                as="main"
-                exit="exit"
-                flexGrow={1}
-                initial="initial"
-                variants={{
-                  initial: { opacity: 0, y: -10 },
-                  enter: { opacity: 1, y: 0 },
-                  exit: { opacity: 0, y: 10 },
-                }}
-              >
-                <Component {...pageProps} />
-                <Footer/>
-              </MotionBox>
-            </AnimatePresence>
-          </GlobalStyle>
-        </ChakraProvider>
-      </RecoilRoot>
+        <GlobalStyle>
+          <AnimatePresence exitBeforeEnter>
+            <MotionBox
+              key={router.route}
+              animate="enter"
+              as="main"
+              exit="exit"
+              flexGrow={1}
+              initial="initial"
+              variants={{
+                initial: { opacity: 0, y: -10 },
+                enter: { opacity: 1, y: 0 },
+                exit: { opacity: 0, y: 10 },
+              }}
+            >
+              <Component {...pageProps} />
+              <Footer />
+            </MotionBox>
+          </AnimatePresence>
+        </GlobalStyle>
+      </ChakraProvider>
     </UserProvider>
   );
 }

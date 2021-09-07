@@ -2,32 +2,19 @@
 // import Wrapper from "@/layouts/Wrapper"
 import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Grid } from "@chakra-ui/react"
 
-import { useRecoilValue } from "recoil";
-import { huesState, loopState, brightFuncState, satFuncState } from "@/components/store/state";
-
-import PageContainer from "@/layouts/PageContainer"
 import ColorList from "@/elements/ColorList"
+import PageContainer from "@/layouts/PageContainer"
 import JsonAccordion from "@/modules/JsonAccordion"
 import Shades from "@/modules/Shades"
-
 import Hues from "@/modules/Hue"
 import Saved from "@/modules/Saved"
 import Actions from "@/modules/Actions"
 import { genShades } from "@/utils/colors"
-import useStore from "@/components/store/useStore";
-
+import useStore from "@/store/useStore";
 
 
 export default function ColorPage() {
   const [hues, loop, brightFunc, satFunc] = useStore('hues, loop, brightFunc, satFunc')
-
-  /* // Todo: Remove Recoil
-  const hues = useRecoilValue(huesState)
-  const loop = useRecoilValue(loopState)
-  const brightFunc = useRecoilValue(brightFuncState)
-  const satFunc = useRecoilValue(satFuncState)
-  */
- 
   const subColors = genShades(hues, { loop, brightFunc, satFunc })
 
   return (

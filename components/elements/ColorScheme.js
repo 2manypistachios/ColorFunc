@@ -3,30 +3,15 @@ import {
   useRadioGroup,
   useRadio,
   VStack,
-
 } from "@chakra-ui/react"
 
+import useStore from "@/store/useStore"
 import { colorTheory } from "@/utils/colors"
 
-// Todo: Remove Recoil
-import { useRecoilState } from "recoil"
-import { colorSchemeState } from "../store/state"
 
-//-- Zustand
-import useStore from "@/store/useStore"
-
-// @param nice
 export default function ColorTypes() {
   const [scheme, setScheme] = useStore('scheme, setScheme')
-
-  // const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState) // Todo: Remove
-
   const options = [...Object.keys(colorTheory),]
-
-  const tempFunc = (v) => {
-    setColorScheme(v);
-    setScheme(v);
-  }
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "colorScheme",

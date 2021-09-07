@@ -1,7 +1,7 @@
-import { compile } from 'mathjs'; // * Compile allows us to parse strings as mathematical expressions
-const Color = require('color');  // * Color is a simple parsing library that allows us to create a color Object which can convert from hex to hsl.
+import { compile } from 'mathjs'  // * Parse strings as math
+import Color from 'color'         // * Parse string into color obj
 
-//-- List for English Naming Structure --
+// -- List for English Naming Structure --
 const EnglishIsCool = [ 
   "Primary",
   "Secondary",
@@ -15,7 +15,7 @@ const EnglishIsCool = [
   "Denary"
 ]
 
-//-- Builder-Func To Create Hues --
+// -- Builder-Func To Create Hues --
 function harmonize(color, start, end, interval) {
   const dict = {};
   const primary = Color(color);
@@ -31,7 +31,7 @@ function harmonize(color, start, end, interval) {
   return dict
 }
 
-//-- Predefined Hue Functions --
+// -- Predefined Hue Functions --
 const mono = (primary) => harmonize(primary, 0, 0, 0)
 const complement = (primary) => harmonize(primary, 180, 180, 1)
 const split = (primary) => harmonize(primary, 150, 210, 60)
@@ -40,7 +40,7 @@ const tetrad = (primary) => harmonize(primary, 90, 270, 90)
 const analogous = (primary) => harmonize(primary, 30, 90, 30)
 
 
-//-- Generate Hues --
+// -- Generate Hues --
 export const genHues = ({ colorScheme, startingColor }) => {
   let hues
   switch (colorScheme) {
@@ -55,9 +55,10 @@ export const genHues = ({ colorScheme, startingColor }) => {
   return hues;
 }
 
-//-- Generate Shades --
+// -- Generate Shades --
 export const genShades = (dict, { loop, brightFunc, satFunc }) => {
-  let brightness, saturation, shades = {};
+  let brightness, saturation
+  const shades = {};
 
   try {
     brightness = compile(brightFunc);
@@ -71,25 +72,27 @@ export const genShades = (dict, { loop, brightFunc, satFunc }) => {
     saturation = compile("x")
   }
 
+  /* eslint no-return-assign: off */ // This is much neater
   Object.keys(dict).forEach(key => shades[key] = new Map());
 
-  for (let [key, val] of Object.entries(dict)) {
-    if (dict.hasOwnProperty(key)) {
+  for (const [key, val] of Object.entries(dict)) {
+    if (Object.prototype.hasOwnProperty.call(dict, key)) {
       for (let i = 0; i < loop; i++) {
+        let brightMulti, satMulti
         try {
-          var brightMulti = brightness.evaluate({ x: i });
+          brightMulti = brightness.evaluate({ x: i });
         } catch (err) {
-          var brightMulti = 10;
+          brightMulti = 10;
         }
 
         try {
-          var satMulti = saturation.evaluate({ x: i });
+          satMulti = saturation.evaluate({ x: i });
         } catch (err) {
-          var satMulti = 10;
+          satMulti = 10;
         }
 
         const shade = val.darken(brightMulti / 100).saturate(satMulti / 100);
-        const shadeId = (i == 0) ? 50 : (i) * 100
+        const shadeId = (i === 0) ? 50 : (i) * 100
         shades[key].set(shadeId, {
           "hex": shade.hex(),
           "hsl": shade.round().hsl().color,
@@ -101,7 +104,7 @@ export const genShades = (dict, { loop, brightFunc, satFunc }) => {
   return shades;
 }
 
-//-- Combines Functions genHues and genShades --
+// -- Combines Functions genHues and genShades --
 export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop }) => {
   const hues = genHues({ colorScheme, startingColor });
   const shades = genShades(hues, { loop, brightFunc, satFunc })
@@ -109,7 +112,7 @@ export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop
 }
 
 
-//-- Intended to use as a datastore to provide tooltips, currently generates key-names for hues.js
+// -- Intended to use as a datastore to provide tooltips, currently generates key-names for hues.js --
 export const colorTheory = {
   "Monochromatic": {
     "colors": mono,
@@ -135,7 +138,7 @@ export const colorTheory = {
 }
 
 
-//*** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
+// *** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
 // const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
 
 

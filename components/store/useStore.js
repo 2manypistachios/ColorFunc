@@ -1,10 +1,8 @@
-// import create from "zustand"
 import create from 'zustand-store-addons' // -- Zustand-store-addons extends zustand with computations
 import produce from "immer"
 import { devtools } from 'zustand/middleware'; // -- Redux Dev tools
-// import { pipe } from "ramda" // Todo: Potentially remove ramda, since zustand-store-addons has middleware
 
-//-- Color Functionality
+// -- Color Functionality
 import Color from 'color';
 import { genHues } from "@/utils/colors";
 
@@ -18,6 +16,14 @@ const immer = config => (set, get, api) => config((partial, replace) => {
   return set(nextState, replace)
 }, get, api)
 
+
+// -- Following suggested practices by Zustand
+// ? See https://github.com/pmndrs/zustand#middleware
+/* eslint
+  no-void: "off",
+  no-param-reassign: "off",
+  no-return-assign: "off",
+*/
 
 const useStore = create(
   (set) => ({

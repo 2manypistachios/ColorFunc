@@ -12,12 +12,8 @@ import { Heading ,
   FormHelperText,
 } from "@chakra-ui/react"
 
-
-
-import { useRecoilState } from "recoil";
-import { loopState, brightFuncState, satFuncState } from "../store/state"; 
-
 import useStore from "@/store/useStore"
+
 
 export default function Shades() {
   return (

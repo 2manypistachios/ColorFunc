@@ -1,37 +1,22 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { TwitterPicker } from "react-color";
 
-
-// Todo: Remove Color
-import Color from "color";
-// Todo: Remove Recoil
-import { useSetRecoilState } from "recoil";
-import { brightFuncState, loopState, satFuncState, colorSchemeState, startingColorState } from '@/components/store/state';
+import useStore from "@/store/useStore"
 import { colorGen } from "@/utils/colors";
 
 import DeleteSnippet from "@/elements/DeleteSnippet"
 
-import useStore from "@/store/useStore"
 
 export default function SnippetList({ snippet, snippetDeleted }) {
   const [setHex, setScheme, setLoop, setBrightFunc, setSatFunc] = useStore('setHex, setScheme, setLoop, setBrightFunc, setSatFunc')
-
-  /* // Todo: Remove Recoil
-  const setStartingColor = useSetRecoilState(startingColorState)
-  const setColorScheme = useSetRecoilState(colorSchemeState)
-  const setLoop = useSetRecoilState(loopState)
-  const setBrightFunc = useSetRecoilState(brightFuncState)
-  const setSatFunc = useSetRecoilState(satFuncState)
-  */
-
   const { colorScheme, startingColor, brightFunc, satFunc, loop, name } = snippet.data;
-  const colorsObj = colorGen({ colorScheme, startingColor, brightFunc, satFunc, loop })
 
+  const colorsObj = colorGen({ colorScheme, startingColor, brightFunc, satFunc, loop })
   const colors = Object.values(colorsObj).flatMap((colorGroup) => [...colorGroup].flatMap(([, val]) => val.hex))
 
   const changeAlgo = () => {
     setHex(startingColor);
-    setColorScheme(colorScheme)
+    setScheme(colorScheme)
     setLoop(loop)
     setBrightFunc(brightFunc)
     setSatFunc(satFunc)
