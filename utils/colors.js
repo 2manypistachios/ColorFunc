@@ -1,5 +1,5 @@
-import { compile } from 'mathjs'; // Compile allows us to parse strings as mathematical expressions
-const Color = require('color');  // Color is a simple parsing library that allows us to create a color Object which can convert from hex to hsl.
+import { compile } from 'mathjs'; // * Compile allows us to parse strings as mathematical expressions
+const Color = require('color');  // * Color is a simple parsing library that allows us to create a color Object which can convert from hex to hsl.
 
 //-- List for English Naming Structure --
 const EnglishIsCool = [ 
@@ -109,7 +109,7 @@ export const colorGen = ({ colorScheme, startingColor, brightFunc, satFunc, loop
 }
 
 
-//-- Intended to use as a datastore to provide tooltips, currently unused.
+//-- Intended to use as a datastore to provide tooltips, currently generates key-names for hues.js
 export const colorTheory = {
   "Monochromatic": {
     "colors": mono,
@@ -136,10 +136,6 @@ export const colorTheory = {
 
 
 //*** ALL ELSE IS UNUSED BUT POTENTIALLY USEFUL IN FUTURE ***
-
-
-
-
 // const binomialCoeff = (n) => { return (n ** 2 + n) / 2 }
 
 

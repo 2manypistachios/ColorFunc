@@ -14,15 +14,20 @@ import Hues from "@/modules/Hue"
 import Saved from "@/modules/Saved"
 import Actions from "@/modules/Actions"
 import { genShades } from "@/utils/colors"
+import useStore from "@/components/store/useStore";
 
 
 
 export default function ColorPage() {
+  const [hues, loop, brightFunc, satFunc] = useStore('hues, loop, brightFunc, satFunc')
+
+  /* // Todo: Remove Recoil
   const hues = useRecoilValue(huesState)
   const loop = useRecoilValue(loopState)
   const brightFunc = useRecoilValue(brightFuncState)
   const satFunc = useRecoilValue(satFuncState)
-
+  */
+ 
   const subColors = genShades(hues, { loop, brightFunc, satFunc })
 
   return (

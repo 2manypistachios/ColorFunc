@@ -8,15 +8,19 @@ import ColorScheme from "@/elements/ColorScheme"
 
 import { huesState, startingColorState } from "../store/state"
 
+import useStore from "@/store/useStore"
 
 const Hues = () => {
-  const [startingColor, setStartingColor] = useRecoilState(startingColorState)
-  const hues = useRecoilValue(huesState)
+  // Todo: Remove Recoil
+  // const [startingColor, setStartingColor] = useRecoilState(startingColorState)
+  // const hues = useRecoilValue(huesState)
+
+  const [hex, setHex, hues] = useStore('hex, setHex, hues')
 
   return (
     <>
       <Heading mb="1.2em">Primary Color</Heading>
-      <SketchPicker disableAlpha presetColors={Object.values(hues).map((v) => v.hex())} color={startingColor.hex()} onChange={(val) => setStartingColor(Color(val.hex))} />
+      <SketchPicker disableAlpha presetColors={Object.values(hues).map((v) => v.hex())} color={hex} onChange={(val) => setHex(val.hex)} />
       <ColorScheme />
     </>
   )

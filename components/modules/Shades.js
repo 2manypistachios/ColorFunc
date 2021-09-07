@@ -17,6 +17,8 @@ import { Heading ,
 import { useRecoilState } from "recoil";
 import { loopState, brightFuncState, satFuncState } from "../store/state"; 
 
+import useStore from "@/store/useStore"
+
 export default function Shades() {
   return (
     <FormControl id="color-picker" display="flex" flexDirection="column">
@@ -30,7 +32,7 @@ export default function Shades() {
 }
 
 const FormLoop = () => {
-  const [loop, setLoop] = useRecoilState(loopState);
+  const [loop, setLoop] = useStore('loop, setLoop');
 
   return (
     <>
@@ -49,7 +51,7 @@ const FormLoop = () => {
 
 const FormBright = () => {
   let brightSlope;
-  const [brightFunc, setBrightFunc] = useRecoilState(brightFuncState);
+  const [brightFunc, setBrightFunc] = useStore('brightFunc, setBrightFunc');
 
   try {
     brightSlope = `Each step darkens by: ${derivative(brightFunc, "x").toString()}%`
@@ -68,7 +70,7 @@ const FormBright = () => {
 
 const FormSat = () => {
   let satSlope;
-  const [satFunc, setSatFunc] = useRecoilState(satFuncState);
+  const [satFunc, setSatFunc] = useStore('satFunc, setSatFunc');
 
   try {
     satSlope = `Each step saturates by: ${derivative(satFunc, "x").toString()}%`

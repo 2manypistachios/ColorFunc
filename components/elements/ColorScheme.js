@@ -12,13 +12,14 @@ import { colorTheory } from "@/utils/colors"
 import { useRecoilState } from "recoil"
 import { colorSchemeState } from "../store/state"
 
+//-- Zustand
 import useStore from "@/store/useStore"
-import shallow from 'zustand/shallow'
 
+// @param nice
 export default function ColorTypes() {
-  const [scheme, setScheme] = useStore(state => [state.scheme, state.setScheme], shallow)
+  const [scheme, setScheme] = useStore('scheme, setScheme')
 
-  const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState)
+  // const [colorScheme, setColorScheme] = useRecoilState(colorSchemeState) // Todo: Remove
 
   const options = [...Object.keys(colorTheory),]
 
@@ -29,8 +30,8 @@ export default function ColorTypes() {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "colorScheme",
-    value: colorScheme,
-    onChange: tempFunc,
+    value: scheme,
+    onChange: setScheme,
   })
 
   const group = getRootProps()
