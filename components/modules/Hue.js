@@ -1,5 +1,6 @@
 import { Heading } from "@chakra-ui/react"
 import { SketchPicker } from "react-color"
+import ColorPicker from "@/components/colorWheel/ColorPicker"
 
 import ColorScheme from "@/elements/ColorScheme"
 import useStore from "@/store/useStore"
@@ -10,7 +11,11 @@ const Hues = () => {
   return (
     <>
       <Heading mb="1.2em">Primary Color</Heading>
-      <SketchPicker disableAlpha presetColors={Object.values(hues).map((v) => v.hex())} color={hex} onChange={(val) => setHex(val.hex)} />
+      <ColorPicker
+        initialColor={hex}
+        schemeColors={Object.values(hues).map((v) => v.hex())}
+        onChange={(val) => setHex(val.hex)}
+        size={250} />
       <ColorScheme />
     </>
   )
