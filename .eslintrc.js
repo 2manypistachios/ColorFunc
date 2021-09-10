@@ -22,8 +22,14 @@ module.exports = {
       version: 'detect',
     },
   },
-  extends: ['plugin:react/recommended', 'next', 'airbnb', 'prettier'],
-  plugins: ['react', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'next',
+    'airbnb',
+    'prettier',
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"],
+  plugins: ['react', 'prettier', "@typescript-eslint"],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

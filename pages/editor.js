@@ -9,13 +9,15 @@ import Shades from "@/modules/Shades"
 import Hues from "@/modules/Hue"
 import Saved from "@/modules/Saved"
 import Actions from "@/modules/Actions"
-import { genShades } from "@/utils/colors"
+import { genTones } from "@/utils/colors"
 import useStore from "@/store/useStore";
 
 
 export default function ColorPage() {
   const [hues, loop, brightFunc, satFunc] = useStore('hues, loop, brightFunc, satFunc')
-  const subColors = genShades(hues, { loop, brightFunc, satFunc })
+  const subColors = genTones(hues, { loop, brightFunc, satFunc })
+
+  console.log("sub:", subColors)
 
   return (
     <PageContainer title="C/F" minH="100vh">
@@ -40,7 +42,7 @@ export default function ColorPage() {
                 <Shades />
               </TabPanel>
               <TabPanel>
-                <JsonAccordion subColors={subColors} />
+                {/* <JsonAccordion subColors={subColors} /> */}
               </TabPanel>
               <TabPanel>
                 <Saved />

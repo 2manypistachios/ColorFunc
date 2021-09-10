@@ -6,17 +6,20 @@ import {
 } from "@chakra-ui/react"
 
 import useStore from "@/store/useStore"
-import { colorTheory } from "@/utils/colors"
+import { hueShifts } from "@/utils/harmonies"
 
 
 export default function ColorTypes() {
-  const [scheme, setScheme] = useStore('scheme, setScheme')
-  const options = [...Object.keys(colorTheory),]
+  const [harmony, setHarmony] = useStore('harmony, setHarmony')
+  
+  const options = Object.keys(hueShifts)
+  const readableOptions = options.map((shift) => shift.replace('-',' ').replace(/^\w/g, c => c.toUpperCase()))
+
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "colorScheme",
-    value: scheme,
-    onChange: setScheme,
+    value: harmony,
+    onChange: setHarmony,
   })
 
   const group = getRootProps()
@@ -24,11 +27,11 @@ export default function ColorTypes() {
   return (
     <Box mt="1rem">
       <VStack {...group}>
-        {options.map((value) => {
+        {options.map((value, i) => {
           const radio = getRadioProps({ value })
           return (
             <RadioCard key={value} {...radio}>
-              {value}
+              {readableOptions[i]}
             </RadioCard>
           )
         })}

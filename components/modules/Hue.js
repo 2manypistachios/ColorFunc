@@ -1,20 +1,20 @@
 import { Heading } from "@chakra-ui/react"
-import { SketchPicker } from "react-color"
-import ColorPicker from "@/components/colorWheel/ColorPicker"
 
+import ColorPicker from "@/components/colorWheel/ColorPicker"
 import ColorScheme from "@/elements/ColorScheme"
 import useStore from "@/store/useStore"
 
+
 const Hues = () => {
   const [hex, setHex, hues] = useStore('hex, setHex, hues')
-
+  
   return (
     <>
       <Heading mb="1.2em">Primary Color</Heading>
       <ColorPicker
         initialColor={hex}
-        schemeColors={Object.values(hues).map((v) => v.hex())}
-        onChange={(val) => setHex(val.hex)}
+        colors={Object.values(hues)}
+        onChange={(val) => setHex(val.toHex())}
         size={250} />
       <ColorScheme />
     </>

@@ -9,14 +9,14 @@ import DeleteSnippet from "@/elements/DeleteSnippet"
 
 export default function SnippetList({ snippet, snippetDeleted }) {
   const [setHex, setScheme, setLoop, setBrightFunc, setSatFunc] = useStore('setHex, setScheme, setLoop, setBrightFunc, setSatFunc')
-  const { colorScheme, startingColor, brightFunc, satFunc, loop, name } = snippet.data;
+  const { harmony, startingColor, brightFunc, satFunc, loop, name } = snippet.data;
 
-  const colorsObj = colorGen({ colorScheme, startingColor, brightFunc, satFunc, loop })
+  const colorsObj = colorGen({ harmony, startingColor, brightFunc, satFunc, loop })
   const colors = Object.values(colorsObj).flatMap((colorGroup) => [...colorGroup].flatMap(([, val]) => val.hex))
 
   const changeAlgo = () => {
     setHex(startingColor);
-    setScheme(colorScheme)
+    setScheme(harmony)
     setLoop(loop)
     setBrightFunc(brightFunc)
     setSatFunc(satFunc)
