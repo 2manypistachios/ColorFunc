@@ -7,14 +7,13 @@ import {
 
 import useStore from "@/store/useStore"
 import { hueShifts } from "@/utils/harmonies"
+import { useEffect } from "react"
 
 
 export default function ColorTypes() {
   const [harmony, setHarmony] = useStore('harmony, setHarmony')
-  
   const options = Object.keys(hueShifts)
-  const readableOptions = options.map((shift) => shift.replace('-',' ').replace(/^\w/g, c => c.toUpperCase()))
-
+  const readableOptions = options.map((shift) => shift.replace('-', ' ').replace(/^\w/g, c => c.toUpperCase()))
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "colorScheme",
@@ -40,14 +39,31 @@ export default function ColorTypes() {
   )
 }
 
-export const RadioCard = ({children, ...props}) => {
+export const RadioCard = ({ children, ...props }) => {
+  const hues = useStore('hues')
   const { getInputProps, getCheckboxProps } = useRadio(props)
 
   const input = getInputProps()
   const checkbox = getCheckboxProps()
 
+  let bg = "transparent"
+  const isChecked = checkbox['data-checked']
+  if (isChecked !== undefined) {
+    bg = hues.map((hue) => hue.toHex()).join(',')
+    if (bg.length == 1) {
+      bg.push(bg[0])
+    }
+    console.log(bg)
+  }
+
+  // Todo: Clean up reactivity
+  useEffect(() => {
+  }, [isChecked])
+
   return (
-    <Box as="label" width="100%">
+    <Box as="label" width="100%"
+
+    >
       <input {...input} />
       <Box
         {...checkbox}
@@ -56,13 +72,14 @@ export const RadioCard = ({children, ...props}) => {
         borderWidth="1px"
         borderRadius="md"
         boxShadow="md"
-        _checked={{
-          bg: "teal.600",
-          color: "white",
-          borderColor: "teal.600",
+
+        sx={{
+          borderImage: `linear-gradient(to right, transparent, ${bg}, transparent) 1`
         }}
-        _focus={{
-          boxShadow: "outline",
+
+        _checked={{
+          color: "white",
+          borderWidth: '5px',
         }}
         px={5}
         py={3}

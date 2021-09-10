@@ -21,10 +21,10 @@ const ColorList = ({ subColors }) => (
 const ColorBox = ({ color }) => {
   return (
     <WrapItem className="text">
-      <Square flexDirection="column" bg={color.toHex()} size={["25vw"]} maxH="200px" maxW="200px">
+      <Square flexDirection="column" bg={color.toHex()} size={["25vw"]} maxH="200px" maxW="200px" color={color.isLight()? 'gray.800' : 'whiteAlpha.900'}>
         <Heading size="sm">{color.toHex()}</Heading>
         <Heading size="sm">{color.id}</Heading>
-        <Text>{color.toHslString()}</Text>
+        <Text >{color.toHslString()}</Text>
       </Square>
     </WrapItem>
   )
