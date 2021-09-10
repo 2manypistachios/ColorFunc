@@ -6,8 +6,11 @@ import styles from './styles/ColorWheel.module.css';
 import { coordinatesToHS, hsToCoordinates } from './helpers/utils';
 import LevelBar from './LevelBar';
 
+
+
 const ColorWheel = ({
   color,
+  colors,
   size,
   setColor,
 }) => {
@@ -73,16 +76,7 @@ const ColorWheel = ({
         tabIndex={-5}
         style={{ margin: `0 ${size / 10}px` }}
       >
-        <div
-          className={styles.handle}
-          style={{
-            top: y * size,
-            left: x * size,
-            width: size / 15,
-            height: size / 15,
-            border: `${size / 150}px solid black`,
-          }}
-        />
+        {colors.map((color, i) => <Indicator color={color.toHsl()} size={size} id={i} key={i}/>)}
       </div>
       <LevelBar
         alignRight
@@ -103,6 +97,7 @@ ColorWheel.propTypes = {
     s: PropTypes.number,
     l: PropTypes.number,
   }),
+  colors: PropTypes.array,
   /** Size of color wheel */
   size: PropTypes.number.isRequired,
   /** Callback function to set color */
@@ -116,4 +111,23 @@ ColorWheel.defaultProps = {
     l: 50,
   },
 };
+
+
+const Indicator = ({ color, size }) => {
+  const { x, y } = hsToCoordinates(color.h, color.s);
+
+  return (
+    <div
+      className={styles.handle}
+      style={{
+        top: y * size,
+        left: x * size,
+        width: size / 15,
+        height: size / 15,
+        border: `${size / 150}px solid black`,
+      }}
+    />
+  )
+}
+
 export default ColorWheel;

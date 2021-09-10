@@ -1,49 +1,33 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import styles from './styles/ColorPicker.module.css';
+import { colord } from "colord"
+import produce from "immer"
 import PropTypes from 'prop-types';
+
+import styles from './styles/ColorPicker.module.css';
 import ColorWheel from './ColorWheel';
-import {
-  hexToRGB, hslToRgb, rgbToHex, rgbToHsl,
-} from './helpers/utils';
+
 
 const ColorPicker = ({
   size,
   initialColor,
+  colors,
   onChange,
 }) => {
-  const [pickedColor, setPickedColor] = useState({
-    hex: '#FF0000',
-    rgb: { r: 255, g: 0, b: 0 },
-    hsl: { h: 0, s: 100, l: 50 },
-  });
+  const [pickedColor, setPickedColor] = useState(colord("#fff"));
+  
 
   useEffect(() => {
-    if (/^#[0-9A-F]{6}$/i.test(initialColor)) {
-      const hex = initialColor.toUpperCase();
-      const rgb = hexToRGB(initialColor);
-      const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-      setPickedColor({ hex, rgb, hsl });
-    } else if (Number.isInteger(initialColor.r)
-      && Number.isInteger(initialColor.g)
-      && Number.isInteger(initialColor.b)) {
-      const hex = rgbToHex(initialColor.r, initialColor.g, initialColor.b);
-      const rgb = initialColor;
-      const hsl = rgbToHsl(initialColor.r, initialColor.g, initialColor.b);
-      setPickedColor({ hex, rgb, hsl });
-    } else {
-      setPickedColor({ hex: '#FF0000', rgb: { r: 255, g: 0, b: 0 }, hsl: { h: 0, s: 100, l: 50 } });
-    }
-  }, []);
+    setPickedColor(colord(initialColor))
+  }, [initialColor]);
 
   const setColorFromWheel = useCallback(hsl => {
-    const h = parseFloat((hsl.h === undefined ? pickedColor.hsl.h : hsl.h).toFixed(2));
-    const s = parseFloat((hsl.s === undefined ? pickedColor.hsl.s : hsl.s).toFixed(2));
-    const l = parseFloat((hsl.l === undefined ? pickedColor.hsl.l : hsl.l).toFixed(2));
-    const rgb = hslToRgb(h, s, l);
-    const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
-    setPickedColor({ hex, rgb, hsl: { h, s, l } });
-    onChange({ hex, rgb, hsl: { h, s, l } });
-  }, [onChange, pickedColor.hsl]);
+    const updatedColor = produce(hsl, draft => {
+      return {...pickedColor.toHsl(), ...draft }
+    })
+    
+    setPickedColor(colord(updatedColor))
+    onChange(colord(updatedColor));
+  }, [onChange, colord]);
 
   return (
     <div>
@@ -55,25 +39,24 @@ const ColorPicker = ({
         }}
       >
         <ColorWheel
-          color={pickedColor.hsl}
+          color={pickedColor.toHsl()}
+          colors={colors}
           size={size * (5 / 6)}
           setColor={setColorFromWheel}
         />
         <div className={styles.pickedColorContainer}>
           <div
             className={styles.pickedColor}
-            style={{
-              backgroundColor: pickedColor.hex,
-            }}
+            style={{ backgroundColor: pickedColor.toHex()}}
           >
             <div
               className={styles.hexValue}
               style={{
                 fontSize: size / 12,
-                color: pickedColor.hsl.l > 70 ? 'black' : 'white',
+                color: pickedColor.brightness() > .7 ? 'black' : 'white',
               }}
             >
-              {pickedColor.hex}
+              {pickedColor.toHex()}
             </div>
           </div>
         </div>
