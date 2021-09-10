@@ -1,16 +1,15 @@
 import { Box, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react"
 
-function jsonReplacer(key, val) {
-  if (typeof val[0] === "object") {
-    const returnObj = {}
-    
-    val[0].tones.forEach(tone => {
-      returnObj[tone.id] = tone.toHex()
-    });
-
-    return returnObj;
-  }
-  return val;
+function jsonReplacer(json) {
+  let returnObj = {}
+  json.forEach((val) => {
+    let subGroup = {}
+    val.tones.forEach(tone => {
+      subGroup[tone.id] = tone.toHex()
+    })
+    returnObj[val.group] = subGroup;
+  })
+  return returnObj
 }
 
 function cssReplacer(val,) {
@@ -28,11 +27,14 @@ function cssReplacer(val,) {
 
 export default function JsonAccordion({ subColors }) {
   const cssVars = subColors.map(cssReplacer)
+  const jsonVars = jsonReplacer(subColors)
+
+  console.log(jsonVars)
 
   return (
     <>
       <Accord title="CSS Export">{cssVars}</Accord>
-      <Accord title="JSON Export">{JSON.stringify(subColors, jsonReplacer, " ")}</Accord>
+      <Accord title="JSON Export">{JSON.stringify(jsonVars, null, ' ')}</Accord>
     </>
   )
 }
