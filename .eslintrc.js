@@ -5,7 +5,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:@next/next/recommended','eslint:recommended', 'prettier'],
+  extends: ['eslint:recommended', 'prettier', 'next' ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -33,15 +33,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
         'react/require-default-props': 'off',
-        // allow twin.macro as devDependency
         'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-        'import/order': [
-          'error',
-          {
-            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-            'newlines-between': 'always',
-          },
-        ],
         '@next/next/link-passhref': 'off',
       },
     },

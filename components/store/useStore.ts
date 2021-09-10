@@ -1,18 +1,20 @@
 import create from 'zustand-store-addons'; // -- Zustand-store-addons extends zustand with computations
 import produce from 'immer';
-import { devtools } from 'zustand/middleware'; // -- Redux Dev tools
+import { devtools } from 'zustand/middleware'; // -- Redux Dev tool
 import { State } from 'zustand';
 
+// -- Math Types
+import { MathExpression } from 'mathjs';
+
 // -- Color Functionality
-import { Colord, colord, extend } from 'colord';
+import { colord, extend } from 'colord';
 import xyzPlugin from 'colord/plugins/xyz';
+
 import harmoniesPlugin, { HarmonyType } from '@/utils/harmonies';
 extend([xyzPlugin, harmoniesPlugin]);
 import { genHarmony } from '@/utils/colors';
 
 
-// -- Math Types
-import { MathExpression } from 'mathjs';
 
 // * Immer wraps around setter and getter for immutability shortcut
 // ? See https://github.com/pmndrs/zustand#middleware

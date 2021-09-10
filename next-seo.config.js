@@ -1,6 +1,5 @@
 const title = 'ColorFunc | Max Pod';
-const description =
-  'A Ridiculously Flexible Palette Generator';
+const description = 'A Ridiculously Flexible Palette Generator';
 const url = 'https://color-func.vercel.app/';
 
 const SEO = {

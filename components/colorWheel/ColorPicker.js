@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { colord, Colord } from "colord"
+import { colord } from "colord"
 import produce from "immer"
 
 import PropTypes from 'prop-types';

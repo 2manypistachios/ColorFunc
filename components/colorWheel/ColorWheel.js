@@ -1,11 +1,9 @@
-import React, {
-  useCallback, useEffect, useRef, useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles/ColorWheel.module.css';
 import { coordinatesToHS, hsToCoordinates } from './helpers/utils';
-import LevelBar from './LevelBar';
 
+import LevelBar from './LevelBar';
 
 
 const ColorWheel = ({
@@ -47,8 +45,6 @@ const ColorWheel = ({
       window.removeEventListener('mousemove', mouseMove);
     };
   }, [editing, setColor, size]);
-
-  const { x, y } = hsToCoordinates(color.h, color.s);
 
   const onMouseDown = useCallback(event => {
     setColor(
