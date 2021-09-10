@@ -1,11 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { colord } from "colord"
+import { useCallback, useEffect, useState } from 'react';
+import { colord, Colord } from "colord"
 import produce from "immer"
+
 import PropTypes from 'prop-types';
 
 import styles from './styles/ColorPicker.module.css';
 import ColorWheel from './ColorWheel';
 
+/* interface ColorPicker {
+  size: number,
+  initialColor: Colord,
+  colors: Colord[],
+  onChange: function,
+} */
 
 const ColorPicker = ({
   size,
@@ -13,7 +20,7 @@ const ColorPicker = ({
   colors,
   onChange,
 }) => {
-  const [pickedColor, setPickedColor] = useState(colord("#fff"));
+  const [pickedColor, setPickedColor] = useState(colord(initialColor));
   
 
   useEffect(() => {
@@ -21,13 +28,11 @@ const ColorPicker = ({
   }, [initialColor]);
 
   const setColorFromWheel = useCallback(hsl => {
-    const updatedColor = produce(hsl, draft => {
-      return {...pickedColor.toHsl(), ...draft }
-    })
+    const updatedColor = produce(hsl, draft => ({...pickedColor.toHsl(), ...draft }))
     
     setPickedColor(colord(updatedColor))
     onChange(colord(updatedColor));
-  }, [onChange, colord]);
+  }, [onChange, pickedColor]);
 
   return (
     <div>
@@ -81,7 +86,7 @@ ColorPicker.propTypes = {
 ColorPicker.defaultProps = {
   size: 100,
   initialColor: '#FF0000',
-  onChange: (() => {}),
+  onChange: Function,
 };
 
 export default ColorPicker;
