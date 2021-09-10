@@ -13,7 +13,7 @@ const Actions = ({ switchName }) => {
       <Button
         rightIcon={<FaAngleRight />}
         onClick={() =>
-          router.push(switchName === 'Get Started!' ? '/color' : '/')
+          router.push(switchName === 'Get Started!' ? '/editor' : '/')
         }
       >
         {switchName}
@@ -27,7 +27,7 @@ const Actions = ({ switchName }) => {
         <Button
           leftIcon={<FaAngleLeft />}
           onClick={() =>
-            router.push(switchName === 'Get Started!' ? '/color' : '/')
+            router.push(switchName === 'Get Started!' ? '/editor' : '/')
           }
         >
           {switchName}
