@@ -1,11 +1,12 @@
 import { Box, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from "@chakra-ui/react"
 
 function jsonReplacer(key, val) {
-  if (val instanceof Map) {
+  if (typeof val[0] === "object") {
     const returnObj = {}
-    for (const [mapKey, mapVal] of val) {
-      returnObj[mapKey] = mapVal.hex
-    }
+    
+    val[0].tones.forEach(tone => {
+      returnObj[tone.id] = tone.toHex()
+    });
 
     return returnObj;
   }
@@ -13,12 +14,12 @@ function jsonReplacer(key, val) {
 }
 
 function cssReplacer(val,) {
-  if (val[1] instanceof Map) {
+  if (typeof val === "object") {
     let returnStr = ''
 
-    for (const [mapKey, mapVal] of val[1]) {
-      returnStr += `--${val[0]}-${mapKey}: ${mapVal.hex}; \n`
-    }
+    val.tones.forEach(tone => {
+      returnStr += `--${val.group}-${tone.id}: ${tone.toHex()}; \n`
+    })
 
     return returnStr;
   }
@@ -26,9 +27,8 @@ function cssReplacer(val,) {
 }
 
 export default function JsonAccordion({ subColors }) {
-  // See https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map
-  // console.log('subcolors: ', subColors, )
-  const cssVars = Object.entries(subColors).map(cssReplacer)
+  const cssVars = subColors.map(cssReplacer)
+
   return (
     <>
       <Accord title="CSS Export">{cssVars}</Accord>

@@ -42,7 +42,7 @@ export default function ColorPage() {
                 <Shades />
               </TabPanel>
               <TabPanel>
-                {/* <JsonAccordion subColors={subColors} /> */}
+                <JsonAccordion subColors={subColors} />
               </TabPanel>
               <TabPanel>
                 <Saved />
