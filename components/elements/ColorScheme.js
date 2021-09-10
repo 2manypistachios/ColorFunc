@@ -49,11 +49,12 @@ export const RadioCard = ({ children, ...props }) => {
   let bg = "transparent"
   const isChecked = checkbox['data-checked']
   if (isChecked !== undefined) {
-    bg = hues.map((hue) => hue.toHex()).join(',')
-    if (bg.length == 1) {
-      bg.push(bg[0])
+    let hexes = hues.map((hue) => hue.toHex())
+    if (hexes.length == 1) {
+      bg = [...hexes, ...hexes]
+    } else {
+      bg = hexes
     }
-    console.log(bg)
   }
 
   // Todo: Clean up reactivity
@@ -74,11 +75,10 @@ export const RadioCard = ({ children, ...props }) => {
         boxShadow="md"
 
         sx={{
-          borderImage: `linear-gradient(to right, transparent, ${bg}, transparent) 1`
+          borderImage: `linear-gradient(to right, ${bg}) 1`
         }}
 
         _checked={{
-          color: "white",
           borderWidth: '5px',
         }}
         px={5}
