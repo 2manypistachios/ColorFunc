@@ -1,50 +1,23 @@
 module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: ['plugin:@next/next/recommended','eslint:recommended', 'prettier'],
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  env: {
-    browser: true,
-    node: true,
-    es6: true,
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        paths: ['.', 'components', 'styles'],
-        extensions: ['.js', '.jsx'],
-      },
-    },
-    react: {
-      version: 'detect',
-    },
-  },
-  extends: [
-    'next',
-    'plugin:react/recommended',
-    'airbnb',
-    'prettier',],
-  plugins: ['react', 'prettier'],
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/jsx-props-no-spreading': 'off',
-    '@next/next/no-page-custom-font': 'off',
-    'no-plusplus': 'off',
-    'import/no-unresolved': 'off', // Fails with module paths
-    'import/extensions': 'off', // Fails with module paths
-    '@next/next/no-document-import-in-page': 'off', // Mistakenly Thinks I'm Breaking The Rule
-    'no-restricted-syntax': 'off',
-    'one-var': 'off'
-  },
+  rules: {},
   overrides: [
     {
       files: ['**/*.ts?(x)'],
-      parser: "@typescript-eslint/parser",
+      parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -53,16 +26,24 @@ module.exports = {
         sourceType: 'module',
         project: './tsconfig.json',
       },
-      extends: [
-        'plugin:react/recommended', 'airbnb-typescript', 'prettier'
-      ],
-      plugins: ['react', "@typescript-eslint"],
+      extends: ['plugin:react/recommended', 'airbnb-typescript', 'prettier', 'next'],
+      plugins: ['react', '@typescript-eslint'],
       rules: {
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/prop-types': 'off',
         'react/require-default-props': 'off',
+        // allow twin.macro as devDependency
+        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+        'import/order': [
+          'error',
+          {
+            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+            'newlines-between': 'always',
+          },
+        ],
+        '@next/next/link-passhref': 'off',
       },
-    }
-  ]
+    },
+  ],
 };
