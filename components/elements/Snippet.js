@@ -26,7 +26,7 @@ export default function SnippetList({ snippet, snippetDeleted }) {
       <Heading onClick={changeAlgo} size="large" mt="1.5rem" w="80%" display="inline-block">{name}</Heading>
       <DeleteSnippet id={snippet.id} snippetDeleted={snippetDeleted} w="5%" display="inline-block"/>
       <Box onClick={changeAlgo}>
-        {/*<TwitterPicker colors={colors} triangle="hide" color={colors[0]} />*/}
+        {/* //Todo: Replace: <TwitterPicker colors={colors} triangle="hide" color={colors[0]} />*/}
       </Box>
     </Box>
   )
