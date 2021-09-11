@@ -29,8 +29,6 @@ export default function JsonAccordion({ subColors }) {
   const cssVars = subColors.map(cssReplacer)
   const jsonVars = jsonReplacer(subColors)
 
-  console.log(jsonVars)
-
   return (
     <>
       <Accord title="CSS Export">{cssVars}</Accord>

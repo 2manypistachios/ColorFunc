@@ -17,8 +17,6 @@ export default function ColorPage() {
   const [hues, loop, brightFunc, satFunc] = useStore('hues, loop, brightFunc, satFunc')
   const subColors = genTones(hues, { loop, brightFunc, satFunc })
 
-  console.log("sub:", subColors)
-
   return (
     <PageContainer title="C/F" minH="100vh">
       <Grid flex="1" w="100%" py="33px" justifyContent="center" alignItems="baseline">
