@@ -24,7 +24,7 @@ const EnglishIsCool = [
 
 
 // -- Generate Harmonies --
-type genHarmony = {
+export type GenHarmony = {
   harmony: HarmonyType | number[];
   startingColor: Colord;
 };
@@ -32,7 +32,7 @@ type genHarmony = {
 export const genHarmony = ({
   harmony,
   startingColor,
-}: genHarmony): Colord[] => {
+}: GenHarmony): Colord[] => {
   if (typeof harmony === 'object') {
     return startingColor.customHarmony(harmony);
   } else {
@@ -41,17 +41,16 @@ export const genHarmony = ({
 };
 
 // -- Generate Shades --
-type genTones = {
+export type GenTones = {
   loop: number;
   brightFunc: MathExpression;
   satFunc: MathExpression;
 };
 
 
-
 export const genTones = (
   hues: Colord[],
-  { loop, brightFunc, satFunc }: genTones
+  { loop, brightFunc, satFunc }: GenTones
 ) => {
   let brightness: EvalFunction, saturation: EvalFunction;
 
@@ -105,7 +104,7 @@ export const colorGen = ({
   brightFunc,
   satFunc,
   loop,
-}: genHarmony & genTones) => {
+}: GenHarmony & GenTones) => {
   const hues = genHarmony({ harmony, startingColor });
   const shades = genTones(hues, { loop, brightFunc, satFunc });
   return shades;

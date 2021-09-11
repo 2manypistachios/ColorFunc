@@ -6,7 +6,7 @@ import useStore from "@/store/useStore"
 
 export default function SnippetForm({ nickname }) {
   const user = nickname;
-  const [hex, scheme, loop, brightFunc, satFunc] = useStore('hex, scheme, loop, brightFunc, satFunc')
+  const [hex, harmony, loop, brightFunc, satFunc] = useStore('hex, harmony, loop, brightFunc, satFunc')
 
   const { register, handleSubmit } = useForm();
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function SnippetForm({ nickname }) {
     try {
       await fetch('/api/createSnippet', {
         method: 'POST',
-        body: JSON.stringify({ name, isPublic, user, startingColor: hex, colorScheme: scheme, loop, brightFunc, satFunc }),
+        body: JSON.stringify({ name, isPublic, user, startingColor: hex, harmony, loop, brightFunc, satFunc }),
         headers: { 'Content-Type': 'application/json' }
       })
       router.push('/');

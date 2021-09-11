@@ -7,14 +7,12 @@ import { State } from 'zustand';
 import { MathExpression } from 'mathjs';
 
 // -- Color Functionality
-import { colord, extend } from 'colord';
+import { colord, extend, Colord } from 'colord';
 import xyzPlugin from 'colord/plugins/xyz';
 
 import harmoniesPlugin, { HarmonyType } from '@/utils/harmonies';
 extend([xyzPlugin, harmoniesPlugin]);
 import { genHarmony } from '@/utils/colors';
-
-
 
 // * Immer wraps around setter and getter for immutability shortcut
 // ? See https://github.com/pmndrs/zustand#middleware
@@ -40,21 +38,19 @@ const immer = (config) => (set, get, api) =>
 interface ColorState extends State {
   hex: string;
   setHex: (hex: string) => void;
-  
   harmony: HarmonyType;
   setHarmony: (harmony: HarmonyType) => void;
-  
   loop: number;
   setLoop: (loop) => void;
-
   brightFunc: MathExpression;
   setBrightFunc: (brightFunc: MathExpression) => void;
-
   satFunc: MathExpression;
   setSatFunc: (satFunc: MathExpression) => void;
-
   id: MathExpression;
   setId: (id: MathExpression) => void;
+
+  startingColor?(): Colord;
+  hues?(): Colord[];
 }
 
 const useStore = create<ColorState>(
