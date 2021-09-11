@@ -17,7 +17,7 @@ export default function SnippetForm({ nickname }) {
     try {
       await fetch('/api/createSnippet', {
         method: 'POST',
-        body: JSON.stringify({ name, isPublic, user, startingColor: hex, harmony, loop, brightFunc, satFunc }),
+        body: JSON.stringify({ name, isPublic, user, hex, harmony, loop, brightFunc, satFunc }),
         headers: { 'Content-Type': 'application/json' }
       })
       router.push('/');

@@ -19,8 +19,11 @@ interface FaunaInfo {
 
 export type Snippet =
   FaunaInfo &
-  GenHarmony &
-  GenTones
+  GenTones &
+  Omit<GenHarmony, 'startingColor'> &
+  {
+    hex: string
+  }
 
 type FaunaResult = Fauna.values.Document<Snippet[]>
 
