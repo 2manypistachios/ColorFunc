@@ -11,6 +11,7 @@ import Saved from "@/modules/Saved"
 import Actions from "@/modules/Actions"
 import { genTones } from "@/utils/colors"
 import useStore from "@/store/useStore";
+import { AnimatePresence, motion } from "framer-motion"
 
 
 export default function ColorPage() {
@@ -24,7 +25,7 @@ export default function ColorPage() {
       </Grid>
       <Flex pt="100px" wrap="wrap">
         <Flex pos="relative" top="0px" minW="400px" display="grid" align="center" justify="center" flex="2" alignSelf="start">
-          <Tabs w="300px">
+          <Tabs w="300px" isLazy>
             <TabList>
               <Tab>Hue</Tab>
               <Tab>Shades</Tab>
@@ -32,20 +33,30 @@ export default function ColorPage() {
               <Tab>Saved</Tab>
             </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <Hues />
-              </TabPanel>
-              <TabPanel>
-                <Shades />
-              </TabPanel>
-              <TabPanel>
-                <JsonAccordion subColors={subColors} />
-              </TabPanel>
-              <TabPanel>
-                <Saved />
-              </TabPanel>
-            </TabPanels>
+            <AnimatePresence>
+              <TabPanels>
+                <TabPanel>
+                  <MotionBox key="hues" {...MotionProps}>
+                    <Hues />
+                  </MotionBox>
+                </TabPanel>
+                <TabPanel>
+                  <MotionBox key="shades" {...MotionProps}>
+                    <Shades />
+                  </MotionBox>
+                </TabPanel>
+                <TabPanel>
+                  <MotionBox key="jsonAccordion" {...MotionProps}>
+                    <JsonAccordion subColors={subColors} />
+                  </MotionBox>
+                </TabPanel>
+                <TabPanel>
+                  <MotionBox key="saved" {...MotionProps}>
+                    <Saved />
+                  </MotionBox>
+                </TabPanel>
+              </TabPanels>
+            </AnimatePresence>
           </Tabs>
         </Flex>
 
@@ -57,3 +68,11 @@ export default function ColorPage() {
   )
 }
 
+const MotionProps = {
+  initial: { x: 300, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -300, opacity: 0 }
+};
+
+
+const MotionBox = motion(Box)
