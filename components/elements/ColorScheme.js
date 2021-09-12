@@ -16,6 +16,8 @@ export default function ColorTypes() {
   const [harmony, setHarmony] = useStore('harmony, setHarmony')
   const options = Object.keys(hueShifts)
 
+  console.log(hueShifts)
+
   // See https://stackoverflow.com/questions/6251463/regex-capitalize-first-letter-every-word-also-after-a-special-character-like-a
   const readableOptions = options.map((shift) => shift.replace(/-/g, ' ').replace(/(\b[a-z](?!\s))/g, c => c.toUpperCase()))
 
@@ -30,6 +32,9 @@ export default function ColorTypes() {
   return (
     <Box mt="1rem">
       <VStack {...group}>
+        {/* //Todo: Implement Custom Hues <RadioCard key={'custom'}>
+          {JSON.stringify(hueShifts[harmony])}
+  </RadioCard> */}
         {options.map((value, i) => {
           const radio = getRadioProps({ value })
           return (
@@ -55,21 +60,21 @@ export const RadioCard = ({ children, ...props }) => {
   const controls = useAnimation()
 
   useEffect(() => {
+    let hexes = hues.map((hue) => hue.alpha(.9).toRgbString())
+    if (hexes.length == 1) {
+      hexes = [...hexes, ...hexes]
+    }
+    
+    // Todo: Create a sandbox of error and post to framer team
     if (isChecked) {
-      let hexes = hues.map((hue) => hue.toHex())
-      if (hexes.length == 1) {
-        hexes = [...hexes, ...hexes]
-      }
-
       controls.start({
         borderImage: `linear-gradient(to right, ${hexes}) 1`,
         borderWidth: '2px',
       })
     } else {
       controls.start({
-        borderImage: '',
-        borderColor: 'var(--chakra-colors-whiteAlpha-300)',
-        borderWidth: '1px',
+        borderImage: ``,
+        borderWidth: '2px',
       })
     }
   }, [isChecked, controls, hues])
@@ -87,8 +92,9 @@ export const RadioCard = ({ children, ...props }) => {
         py={3}
 
         whileHover={{ scale: 1.1 }}
+        initial={{borderImage: ''}}
         animate={controls}
-        transition={{ type: 'spring', bounce: 0, duration: .2}}
+        transition={{ type: 'spring', bounce: .5, duration: .5 }}
       >
         {children}
       </MotionBox>

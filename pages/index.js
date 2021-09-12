@@ -30,7 +30,7 @@ export default function Home() {
           </Box>
         </Grid>
         <Grid flex="1" w="100%" justifyContent="center" alignItems="baseline">
-          <Actions switchName="Get Started!" />
+          <Actions switchName="Editor" />
         </Grid>
       </Flex>
     </PageContainer>
