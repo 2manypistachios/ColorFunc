@@ -16,7 +16,7 @@ export default function ColorTypes() {
   const [harmony, setHarmony] = useStore('harmony, setHarmony')
   const options = Object.keys(hueShifts)
 
-  console.log(hueShifts)
+  // console.log(hueShifts)
 
   // See https://stackoverflow.com/questions/6251463/regex-capitalize-first-letter-every-word-also-after-a-special-character-like-a
   const readableOptions = options.map((shift) => shift.replace(/-/g, ' ').replace(/(\b[a-z](?!\s))/g, c => c.toUpperCase()))
