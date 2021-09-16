@@ -31,7 +31,7 @@ const ContainerWithLogo = ({ logo, children, ...props }) => {
 
   return (
     <Box
-      bg={colorMode === 'light' ? 'white' : 'gray.800'}
+      bg={colorMode === 'light' ? 'white' : 'gray.900'}
       transition="background 100ms linear"
       {...props}
     >

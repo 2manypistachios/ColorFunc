@@ -1,38 +1,55 @@
-import { Heading, Box, Grid, Flex } from '@chakra-ui/react';
+import { Heading, Container, Box, Grid, Flex, Icon, Text, SimpleGrid, GridItem, Stack, chakra, useColorModeValue, useToken } from '@chakra-ui/react';
 import PageContainer from '@/layouts/PageContainer';
 import Actions from '@/modules/Actions';
 
+import CircleShift from '@/components/elements/CircleShift';
+import Features from '@/elements/Features'
+import Demo from '@/elements/Demo'
+import LatestPalattes from '@/elements/LatestPalattes'
 
 export default function Home() {
   return (
     <PageContainer title="Color/Func">
-      <Flex flexDirection="column" minHeight="94vh">
-        <Grid w="100%" justifyContent="center" alignItems="center">
-          <Box pos="relative" display="inline-block">
-            <Heading fontFamily="Coves" as="h1" fontSize={["10rem", "10rem", "23rem"]} my={10} textShadow="0px 0px var(--chakra-colors-blackAlpha-300)">
-              Color
-            </Heading>
-            <Box pos="absolute" display="inline-block" bottom={["20px","20px","0px"]} left="30%">
-              <Heading
-                fontFamily="Brant" as="h1" fontSize={["5rem", "5rem", "10rem"]}
-                color='blackAlpha.800'
-                _before={{
-                  bgGradient: "linear(to-l, #7928CA,#FF0080)", bgClip: "text",
-                  content: "'Func'",
-                  position: 'absolute',
-                  left: 0,
-                  top: .5,
-                }}
-              >
-                Func
-              </Heading>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid flex="1" w="100%" justifyContent="center" alignItems="baseline">
+      <Flex flexDirection="row" minHeight="94vh" wrap="wrap-reverse" bg={useColorModeValue('gray.50', 'gray.900')}>
+        <Flex flex="1" flexDirection="column" alignItems="center" justifyContent="space-around">
+          <SvgLogoText size={80} />
+          <Container>
+            <Heading mb="1rem">Professional color design one button away</Heading>
+            <Text>Understand and update your theme using best-practices color theory.</Text>
+          </Container>
           <Actions switchName="Editor" />
-        </Grid>
+        </Flex>
+        <Flex flex="1" alignItems="center" justifyContent="center">
+          {/*<CircleShift bg={useColorModeValue('gray.50', 'gray.900')} />*/}
+        </Flex>
       </Flex>
+      <Features />
+      <Demo />
+      <LatestPalattes />
     </PageContainer>
   );
+}
+
+const SvgLogo = ({ ...props }) => (
+  <Icon width="27.632px" height="35.53px" viewBox="0 0 27.632 35.53" {...props}>
+    <g transform="translate(-40.042 -45.304)" fill="#000000" strokeWidth=".26458">
+      <text x="38.03941" y="80.83374" fontFamily="sans-serif" fontSize="50.8px"><tspan x="38.03941" y="80.83374" fontFamily="Coves" fontSize="50.8px" fontWeight="bold" strokeWidth=".26458">C</tspan></text>
+      <text x="51.209511" y="79.788559" fontFamily="brant" fontSize="22.578px" fontWeight="bold"><tspan x="51.209511" y="79.788559" fontFamily="brant" fontSize="22.578px" fontWeight="bold" strokeWidth=".26458">F</tspan></text>
+    </g>
+  </Icon>
+)
+
+const SvgLogoText = ({ size = 1, colors, ...props }) => {
+  const chakraColors = useToken("colors", ['gray.800', 'bright', 'blackAlpha.800', colors])
+  const bg = useColorModeValue(chakraColors[0], chakraColors[1])
+
+  return (
+    <Icon width={`${size}%`} height={`${size * 103.25 / 223.26}%`} viewBox="0 0 59.07 27.319" {...props}>
+      <g transform="translate(-44.105 -36.628)" fontFamily="sans-serif" strokeWidth=".26458">
+        <text x="42.992031" y="56.40239" fill={bg} fontSize="28.222px"><tspan x="42.992031" y="56.40239" fontFamily="Coves" fontSize="28.222px" fontWeight="bold" strokeWidth=".26458">Color</tspan></text>
+        <text x="61.518898" y="63.802979" fill={chakraColors[2]} fontSize="12.7px"><tspan x="61.518898" y="63.802979" fontFamily="Brant" fontSize="12.7px" fontWeight="600" strokeWidth=".26458">Func</tspan></text>
+        <text x="61.980068" y="63.879738" fill={bg} fontSize="12.7px"><tspan x="61.980068" y="63.879738" fontFamily="Brant" fontSize="12.7px" fontWeight="600" strokeWidth=".26458">Func</tspan></text>
+      </g>
+    </Icon>
+  )
 }
