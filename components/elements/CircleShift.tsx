@@ -1,13 +1,15 @@
-import React from "react";
-let Sketch
-
-if (typeof window !== "undefined") {
-	Sketch = require("react-p5")
-}
-import p5Types from "p5"; //Import this for typechecking and intellisense
-
+import React, { MutableRefObject, useRef } from "react";
 import { useToken, useColorModeValue } from "@chakra-ui/react"
-import { useRef } from "react"
+
+
+import p5Types from "p5"; //Import this for typechecking and intellisense
+import { SketchProps } from "react-p5";
+interface SketchProps2 extends SketchProps {
+	ref?: MutableRefObject<HTMLDivElement>
+}
+import dynamic from 'next/dynamic'
+const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5'), {ssr: false})
+
 
 interface ComponentProps {
 	colors?: string
@@ -16,7 +18,7 @@ interface ComponentProps {
 const CircleShift: React.FC<ComponentProps> = ({ colors = 'gray.500' }: ComponentProps) => {
 	const chakraColors = useToken("colors", ['bright', 'gray.700', colors])
 	const bg = useColorModeValue(chakraColors[0], chakraColors[1])
-	const parentRef = useRef();
+	const parentRef = useRef<HTMLDivElement>(null);
 
 	let time = 0;
 
@@ -27,10 +29,9 @@ const CircleShift: React.FC<ComponentProps> = ({ colors = 'gray.500' }: Componen
 		p5.noFill();
 	};
 
-	const windowResized = (p5: p5Types) => {
-		p5.resizeCanvas(parentRef.current.canvasParentRef.current.clientWidth, parentRef.current.canvasParentRef.current.clientHeight)
-		console.log("should resize", parentRef.current.canvasParentRef.current.clientWidth)
-	}
+	const windowResized = (p5: p5Types, parentRef) => {
+    parentRef.current.retry()
+  }
 
 	const draw = (p5: p5Types) => {
 		p5.background(bg);
@@ -51,7 +52,7 @@ const CircleShift: React.FC<ComponentProps> = ({ colors = 'gray.500' }: Componen
 		time++
 	};
 
-	if (Sketch) return <Sketch ref={parentRef} setup={setup} draw={draw} windowResized={windowResized} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }} />;
+	if (Sketch) return <Sketch ref={parentRef} setup={setup} draw={draw} windowResized={(p5) => windowResized(p5, parentRef)} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }} />;
 	else return <>loading</>;
 };
 

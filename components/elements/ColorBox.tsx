@@ -1,20 +1,16 @@
-import React from "react";
-// let Sketch
-
-// if (typeof window !== "undefined") {
-//   Sketch = require("react-p5")
-// }
-
-import dynamic from 'next/dynamic'
-
-const Sketch = dynamic(() => import('react-p5'), {ssr: false})
-import p5Types from "p5"; //Import this for typechecking and intellisense
-
-
-
+import React, { MutableRefObject, useRef } from "react";
 import { useToken, useColorModeValue } from "@chakra-ui/react"
-import { useRef } from "react"
-import { cos } from "mathjs";
+
+
+import p5Types from "p5"; //Import this for typechecking and intellisense
+import { SketchProps } from "react-p5";
+interface SketchProps2 extends SketchProps {
+	ref?: MutableRefObject<HTMLDivElement>
+}
+import dynamic from 'next/dynamic'
+const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5'), {ssr: false})
+
+
 
 interface ComponentProps {
   colors?: string[]
@@ -64,12 +60,11 @@ const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: Componen
     }
   }
 
-  const windowResized = (p5: p5Types) => {
-    p5.resizeCanvas(parentRef.current.canvasParentRef.current.clientWidth, parentRef.current.canvasParentRef.current.clientHeight)
-    console.log("should resize", parentRef.current.canvasParentRef.current.clientWidth, 500)
+  const windowResized = (p5: p5Types, parentRef) => {
+    parentRef.current.retry()
   }
 
-  if (Sketch) return <Sketch ref={parentRef} setup={setup} windowResized={windowResized} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', height: '100%' }} />;
+  if (Sketch) return <Sketch ref={parentRef} windowResized={(p5) => windowResized(p5, parentRef)} setup={setup} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', height: '100%' }} />;
   else return (<div>loading</div>);
 };
 
