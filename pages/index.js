@@ -13,14 +13,14 @@ export default function Home() {
       <Flex flexDirection="row" minHeight="94vh" wrap="wrap-reverse" bg={useColorModeValue('gray.50', 'gray.900')}>
         <Flex flex="1" flexDirection="column" alignItems="center" justifyContent="space-around">
           <SvgLogoText size={80} />
-          <Container>
-            <Heading mb="1rem">Professional color design one button away</Heading>
-            <Text>Understand and update your theme using best-practices color theory.</Text>
+          <Container width="50ch">
+            <Heading mb="1rem">Functional Color Design.</Heading>
+            <Text>Express your theme in one simple equation.</Text>
           </Container>
           <Actions switchName="Editor" />
         </Flex>
         <Flex flex="1" alignItems="center" justifyContent="center">
-          {/*<CircleShift bg={useColorModeValue('gray.50', 'gray.900')} />*/}
+          <CircleShift bg={useColorModeValue('gray.50', 'gray.900')} />
         </Flex>
       </Flex>
       <Features />

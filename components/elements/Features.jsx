@@ -2,7 +2,11 @@ import { Box, Grid, GridItem, Text, useColorModeValue, List, ListItem, ListIcon,
 import Highlight from '@/elements/Highlight'
 
 import { SiTailwindcss } from "react-icons/si"
-import { MdColorLens } from "react-icons/md"
+import { MdColorLens, } from "react-icons/md"
+import { AiOutlineBgColors, AiOutlineFunction, AiFillApi, AiOutlineShareAlt } from "react-icons/ai"
+import {   FaRobot} from "react-icons/fa"
+import { IoIosConstruct} from "react-icons/io"
+import { GiBrain} from "react-icons/gi"
 
 import ColorBox from '@/elements/ColorBox'
 
@@ -24,23 +28,51 @@ const Features = () => {
           <Icon as={MdColorLens} w="100%" h="100%" />
         </GridItem>
         <GridItem colStart={2} rowSpan={2} sx={{ 'aspectRatio': '1' }} bg="pink.500">
-          <Box h="100%">
           <ColorBox />
-          </Box>
         </GridItem>
         <GridItem colStart={4} display="flex" flexDir="column">
           <Highlight hl={useColorModeValue("red.200", "red.800")} as="h2" size="lg" mb="2rem">Functional Color Design.</Highlight>
           <Text fontSize="lg">Understand and update your theme using best-practices color theory.</Text>
         </GridItem>
-        <GridItem colStart={4} rowSpan={2}>
+        <GridItem colStart={4} rowSpan={2} pt="2rem">
           <List>
             <ListItem fontSize="md">
-              <ListIcon as={SiTailwindcss} color="red.500" />
-              Tailwind & Chakra Compatible
+              <ListIcon as={AiOutlineFunction} color="red.500" />
+              Advanced tone & shade generation
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={MdColorLens} color="red.500" />
+              Wide range of scheme styles
             </ListItem>
             <ListItem fontSize="md">
               <ListIcon as={SiTailwindcss} color="red.500" />
-              Tailwind Compatible
+              Tailwind & Chakra Theme Compatible
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={AiOutlineBgColors} color="red.500" />
+              CSS-Var, JSON, Array Export
+            </ListItem>
+
+            <ListItem mt="2rem">Upcoming Pro Features:</ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={FaRobot} color="gray.500" />
+              Personalized AI Generations 
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={GiBrain} color="gray.500" />
+              Intelligent Context-Dependent ZCOM Schemes  
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={IoIosConstruct} color="gray.500" />
+              Reverse Engineer & Extend Palettes
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={AiFillApi} color="gray.500" />
+              Customizable Rest API & GraphQl API
+            </ListItem>
+            <ListItem fontSize="md">
+              <ListIcon as={AiOutlineShareAlt} color="gray.500" />
+              Instant Share Your Palettes
             </ListItem>
           </List>
         </GridItem>

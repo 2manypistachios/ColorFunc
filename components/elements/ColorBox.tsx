@@ -1,10 +1,16 @@
 import React from "react";
-let Sketch
+// let Sketch
 
-if (typeof window !== "undefined") {
-  Sketch = require("react-p5")
-}
+// if (typeof window !== "undefined") {
+//   Sketch = require("react-p5")
+// }
+
+import dynamic from 'next/dynamic'
+
+const Sketch = dynamic(() => import('react-p5'), {ssr: false})
 import p5Types from "p5"; //Import this for typechecking and intellisense
+
+
 
 import { useToken, useColorModeValue } from "@chakra-ui/react"
 import { useRef } from "react"
@@ -63,7 +69,7 @@ const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: Componen
     console.log("should resize", parentRef.current.canvasParentRef.current.clientWidth, 500)
   }
 
-  if (Sketch) return <Sketch ref={parentRef} setup={setup} windowResized={windowResized} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', height: '500px' }} />;
+  if (Sketch) return <Sketch ref={parentRef} setup={setup} windowResized={windowResized} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', height: '100%' }} />;
   else return (<div>loading</div>);
 };
 
