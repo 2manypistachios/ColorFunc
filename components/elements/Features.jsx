@@ -27,7 +27,7 @@ const Features = () => {
         <GridItem rowStart={3} w="100%" sx={{ 'aspectRatio': '1' }} bg="blue.500" display="flex" alignItems="center" justifyItems="center">
           <Icon as={MdColorLens} w="100%" h="100%" />
         </GridItem>
-        <GridItem colStart={2} rowSpan={2} sx={{ 'aspectRatio': '1' }} bg="pink.500">
+        <GridItem colStart={2} rowSpan={2} sx={{ 'aspectRatio': '1' }} bg="pink.500" mt="auto">
           <ColorBox />
         </GridItem>
         <GridItem colStart={4} display="flex" flexDir="column">

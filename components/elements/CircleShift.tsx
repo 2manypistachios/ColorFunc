@@ -12,12 +12,11 @@ const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5
 
 
 interface ComponentProps {
-	colors?: string
+	bg?: string
 }
 
-const CircleShift: React.FC<ComponentProps> = ({ colors = 'gray.500' }: ComponentProps) => {
-	const chakraColors = useToken("colors", ['bright', 'gray.700', colors])
-	const bg = useColorModeValue(chakraColors[0], chakraColors[1])
+const CircleShift: React.FC<ComponentProps> = ({ bg = 'gray.200' }: ComponentProps) => {
+	const chakraBg = useToken("colors", [bg])
 	const parentRef = useRef<HTMLDivElement>(null);
 
 	let time = 0;
@@ -34,7 +33,7 @@ const CircleShift: React.FC<ComponentProps> = ({ colors = 'gray.500' }: Componen
   }
 
 	const draw = (p5: p5Types) => {
-		p5.background(bg);
+		p5.background(chakraBg);
 
 		for (let i = 0; i < 360; i += 3) {
 			let x = p5.cos(p5.radians(i)) * 50 + p5.width / 2
