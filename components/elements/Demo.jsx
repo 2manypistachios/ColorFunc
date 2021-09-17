@@ -15,9 +15,8 @@ const Demo = () => {
         mr="auto"
         pl={`calc(${horizRem}rem + (${horizMulti - horizRem}) * ((100vw - 20rem)/ (100 - 20)))`}
         pr={`calc(${horizRem}rem + (${horizMulti - horizRem}) * ((100vw - 20rem)/ (100 - 20)))`}
-        pt={`calc(${vertRem}rem + (${vertMulti - vertRem}) * ((100vw - 20rem)/ (100 - 20)))`}
       >
-        <GridItem colStart={2} w="100%" p="1rem">
+        <GridItem colStart={1} colSpan={3} w="100%" p="2rem">
           <Heading size="lg" mb="1rem">Powerful Editing</Heading>
           <Text size="lg">Right in your browser, no designer or software needed</Text>
         </GridItem>

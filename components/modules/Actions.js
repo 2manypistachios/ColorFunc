@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
+import { motion } from "framer-motion"
+
 import ColorModeButton from '@/elements/ColorModeButton';
 
 const Actions = ({ switchName }) => {
@@ -10,28 +12,34 @@ const Actions = ({ switchName }) => {
   let actions = (
     <>
       <ColorModeButton />
-      <Button
+      <MotionButton
+        whileHover={{ scale: 1.1 }}
+        animate={{scale : 1}}
+
         rightIcon={<FaAngleRight />}
         onClick={() =>
           router.push(switchName === 'Editor' ? '/editor' : '/')
         }
       >
         {switchName}
-      </Button>
+      </MotionButton>
     </>
   );
 
   if (switchName === 'First Page') {
     actions = (
       <>
-        <Button
+        <MotionButton
+          whileHover={{ scale: 1.1 }}
+          animate={{scale : 1}}
+
           leftIcon={<FaAngleLeft />}
           onClick={() =>
             router.push(switchName === 'Editor' ? '/editor' : '/')
           }
         >
           {switchName}
-        </Button>
+        </MotionButton>
         <ColorModeButton />
       </>
     );
@@ -41,3 +49,5 @@ const Actions = ({ switchName }) => {
 };
 
 export default Actions;
+
+const MotionButton = motion(Button);
