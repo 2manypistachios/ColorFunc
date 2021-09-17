@@ -1,11 +1,11 @@
-import { Box, Grid, GridItem, Heading, Text, Square, useColorModeValue, Container, Flex } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 import Image from '@/elements/Image'
 import Gif from '/public/colorFuncGif.gif'
 
 
 const Demo = () => {
-  const horizRem = 2, horizMulti = 6, vertRem = 3, vertMulti = 4
+  const horizRem = 2, horizMulti = 6 // , vertRem = 3, vertMulti = 4
 
   return (
     <Box bg={useColorModeValue("blue.200", "blue.700")} color={useColorModeValue('blackAlpha.800', 'bright')}>
@@ -38,7 +38,7 @@ const Demo = () => {
         </GridItem>
 
         <GridItem rowStart={2} rowSpan={4} colStart={{ base: 1, lg: 2 }} colSpan={{ base: 3, md: 2, lg: 1 }} w="100%" h="100%" bg="gray.900">
-          <Image src={Gif} />
+          <Image src={Gif} alt="Demo of application"/>
         </GridItem>
 
       </Grid>

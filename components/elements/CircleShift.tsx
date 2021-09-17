@@ -1,5 +1,5 @@
 import React, { MutableRefObject, useRef } from "react";
-import { useToken, useColorModeValue } from "@chakra-ui/react"
+import { useToken } from "@chakra-ui/react"
 
 
 import p5Types from "p5"; //Import this for typechecking and intellisense
@@ -28,8 +28,8 @@ const CircleShift: React.FC<ComponentProps> = ({ bg = 'gray.200' }: ComponentPro
 		p5.noFill();
 	};
 
-	const windowResized = (p5: p5Types, parentRef) => {
-    parentRef.current.retry()
+	const windowResized = (p5: p5Types, ref) => {
+    ref.current.retry()
   }
 
 	const draw = (p5: p5Types) => {

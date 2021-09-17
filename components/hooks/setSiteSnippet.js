@@ -1,8 +1,7 @@
 import useStore from "@/store/useStore"
-import { useEffect } from "react";
 
 // Not a real hook
-const setSiteSnippet = ({ hex, harmony, loop, brightFunc, satFunc }) => {
+const SetSiteSnippet = ({ hex, harmony, loop, brightFunc, satFunc }) => {
   const [setHex, setHarmony, setLoop, setBrightFunc, setSatFunc] = useStore('setHex, setHarmony, setLoop, setBrightFunc, setSatFunc')
 
   const changeAlgo = () => {
@@ -16,4 +15,4 @@ const setSiteSnippet = ({ hex, harmony, loop, brightFunc, satFunc }) => {
   return changeAlgo;
 }
 
-export default setSiteSnippet;
+export default SetSiteSnippet;

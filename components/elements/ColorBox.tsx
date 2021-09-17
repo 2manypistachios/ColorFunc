@@ -1,5 +1,4 @@
 import React, { MutableRefObject, useRef } from "react";
-import { useToken, useColorModeValue } from "@chakra-ui/react"
 
 
 import p5Types from "p5"; //Import this for typechecking and intellisense
@@ -19,8 +18,8 @@ interface ComponentProps {
 let colorsDefault = ["#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#073b4c", "#ffffff"]
 
 const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: ComponentProps) => {
-  const chakraColors = useToken("colors", ['bright', 'gray.700', ...colors])
-  const bg = useColorModeValue(chakraColors[0], chakraColors[1])
+  // const chakraColors = useToken("colors", ['bright', 'gray.700', ...colors])
+  // const bg = useColorModeValue(chakraColors[0], chakraColors[1])
   const parentRef = useRef();
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
@@ -43,6 +42,7 @@ const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: Componen
       p5.pop();
     }
 
+    /*
     for (let i = 0; i < 50; i++) {
       let x = p5.random(-0.2, 1.2) * p5.width;
       let y = p5.random(-0.2, 1.2) * p5.height;
@@ -57,11 +57,11 @@ const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: Componen
       p5.fill(p5.random(colors));
       p5.noStroke();
       p5.circle(x, y, s);
-    }
+    } */
   }
 
-  const windowResized = (p5: p5Types, parentRef) => {
-    parentRef.current.retry()
+  const windowResized = (p5: p5Types, ref) => {
+    ref.current.retry()
   }
 
   if (Sketch) return <Sketch ref={parentRef} windowResized={(p5) => windowResized(p5, parentRef)} setup={setup} style={{ display: 'grid', alignItems: 'center', justifyContent: 'center', height: '100%' }} />;
@@ -70,7 +70,7 @@ const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: Componen
 
 export default ColorBox
 
-
+/*
 function dripCircle(x: number, y: number, s: number, p5: p5Types, colors: string[]) {
   
   if (!p5) return
@@ -122,4 +122,4 @@ function myLine(x1: number, y1: number, x2: number, y2: number, p5: p5Types) {
   bezierVertex(x2, y2 - w * 0.5, x2 - w * 0.5, y2 - w * 0.1, x2, y2);
   bezierVertex(x2 + w * 0.5, y2 - w * 0.1, x2, y2 - w * 0.5, x1, y1);
   endShape();
-}
+} */

@@ -1,16 +1,14 @@
 import useSWR from 'swr'
 
-import { Box, Grid, GridItem, Heading, Text, Square, useColorModeValue, Container, Flex } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading, useColorModeValue  } from "@chakra-ui/react";
 
-import Wrapper from '@/layouts/Wrapper'
 import Highlight from '@/elements/Highlight'
-import { GiConsoleController } from 'react-icons/gi';
 import setSiteSnippet from '../hooks/setSiteSnippet';
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 const LatestPalattes = () => {
   const horizRem = 5, horizMulti = 8
-  const { data: snippets, mutate } = useSWR(`/api/snippets/`, fetcher)
+  const { data: snippets } = useSWR(`/api/snippets/`, fetcher)
 
   return (
     <Box bg={useColorModeValue("bright", "gray.800")}>
@@ -66,7 +64,7 @@ const GridItems = (snippets) => {
   )
 }
 
-const SquareSnippet = ({ snippet, index, pos, ...props }) => {
+const SquareSnippet = ({ snippet, pos, ...props }) => {
   const changeAlgo = setSiteSnippet(snippet.data);
 
   return (
