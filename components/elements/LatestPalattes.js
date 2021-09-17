@@ -86,7 +86,7 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
       whileHover={{ scale: 1.5 }}
       onHoverStart={onOpen}
       onHoverEnd={onClose}
-      
+
       cursor="pointer"
       sx={{ 'aspectRatio': '1' }}
       width="100%"
@@ -98,26 +98,43 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
   )
 }
 
+const variantParent = {
+  visible: { opacity: .8 },
+  hidden: { opacity: 0 }
+}
+
+const variantChild = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 }
+}
+
 const GridSquareContent = ({ data, parentRef }) => {
+  console.log("data: ", data)
+
   return (
     <Portal containerRef={parentRef}>
       <MotionBox
-        initial={{ opoacity: 0 }}
-        animate={{ opacity: .8 }}
+        initial="hidden"
+        animate="visible"
+        variants={variantParent}
 
         bg={data.hex}
 
         position="absolute" zIndex={1}
-        display="grid"
+        display="grid" justifyItems="center" alignItems="center"
         top="0" bottom="0" left="0" right="0" mx='auto'
         pointerEvents="none"
         width='80vw'
         height='100%'
       >
-        <Container opacity="1" bg="blackAlpha.600" p="1rem" borderRadius="5px">
+        <MotionBox
+          variants={variantChild}
+
+          bg="blackAlpha.300" p="1rem" borderRadius="5px" color="white">
           <Heading size="lg">{data.name}</Heading>
+          <Heading size="sm" mb="1rem">by {data.user}</Heading>
           <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
-        </Container>
+        </MotionBox>
       </MotionBox>
     </Portal>
   )
