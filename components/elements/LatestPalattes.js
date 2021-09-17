@@ -1,17 +1,20 @@
-import useSWR from 'swr'
-
-import { Box, Grid, GridItem, Heading, useColorModeValue  } from "@chakra-ui/react";
+import { forwardRef } from '@chakra-ui/system';
+import { Portal, Container, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 
 import Highlight from '@/elements/Highlight'
 import setSiteSnippet from '../hooks/setSiteSnippet';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-const LatestPalattes = () => {
+
+const LatestPalattes = ({ snippets }) => {
   const horizRem = 5, horizMulti = 8
-  const { data: snippets } = useSWR(`/api/snippets/`, fetcher)
+  const ref = useRef()
+
+  console.log("ref: ", ref)
 
   return (
-    <Box bg={useColorModeValue("bright", "gray.800")}>
+    <Box bg={useColorModeValue("bright", "gray.800")} pos="relative" ref={ref}>
       <Grid templateColumns="repeat(8, 1fr)" templateRows="repeat(5, 1fr)" pt="50px"
         maxW="80rem"
         ml="auto"
@@ -24,7 +27,7 @@ const LatestPalattes = () => {
           <Highlight hl={useColorModeValue("green.200", "green.800")} size="xl" mb="1rem"> Latest Schemes</Highlight>
         </GridItem>
 
-        {snippets && <GridItems snippets={snippets} />}
+        <GridItems snippets={snippets} parentRef={ref} />
 
       </Grid>
     </Box>
@@ -33,14 +36,12 @@ const LatestPalattes = () => {
 
 export default LatestPalattes;
 
-// Todo: Clean up snippet struct and remove snippet.snipppet
-const GridItems = (snippets) => {
-  let totalSnippets = snippets.snippets;
+const GridItems = ({snippets, parentRef}) => {
+  let totalSnippets = snippets;
 
   while (totalSnippets.length < 6) {
-    totalSnippets = [...totalSnippets, snippets.snippets[0]]
+    totalSnippets = [...totalSnippets, snippets[0]]
   }
-  console.log(totalSnippets);
 
   let pos = [
     [7, 1, 1],
@@ -53,32 +54,83 @@ const GridItems = (snippets) => {
 
   return (
     <>
-      <GridSquare rowStart={1} colStart={7} w="100%" bg={totalSnippets[1].data.hex} pos="relative" transform="translateY(-100%) translateX(100%)">
-        <Heading size="xl" mb="1rem">Site</Heading>
-      </GridSquare>
+      <MotionGridSquare
+        whileHover={{ scale: 2 }}
+        animate={{ x: "100%", y: "-100%" }}
+        initial={false}
+
+        transform="translateY(-100%) translateX(100%)"
+        rowStart={1} colStart={7}
+        bg={totalSnippets[1].data.hex}
+        pos="relative"
+      >
+      </MotionGridSquare>
 
       {totalSnippets.map((snippet, index) => (
-        <SquareSnippet snippet={snippet} pos={pos[index]} key={index} index={index} />
+        <SquareSnippet snippet={snippet} pos={pos[index]} key={index} index={index} parentRef={parentRef} />
       ))}
     </>
   )
 }
 
-const SquareSnippet = ({ snippet, pos, ...props }) => {
+const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
   const changeAlgo = setSiteSnippet(snippet.data);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <GridSquare colStart={pos[0]} rowStart={pos[1]} span={pos[2]} bg={snippet.data.hex} onClick={changeAlgo} {...props}>
-      {/*<Heading size="sm" mb="1rem">{snippet.data.name}</Heading>*/}
-    </GridSquare>
+    <MotionGridSquare
+      whileHover={{ scale: 1.5 }}
+      onHoverStart={onOpen}
+      onHoverEnd={onClose}
+
+      //sx={{ 'aspectRatio': '1' }}
+      width="100%"
+      colStart={pos[0]} rowStart={pos[1]} span={pos[2]}
+      bg={snippet.data.hex} onClick={changeAlgo} {...props}
+    >
+      {isOpen && <GridSquareContent data={snippet.data} parentRef={parentRef} />}
+    </MotionGridSquare>
   )
 }
 
-const GridSquare = ({ children, span = 1, ...props }) => {
+const GridSquareContent = ({ data, parentRef }) => {
+  console.log(parentRef)
+
   return (
-    <GridItem w="100%" sx={{ 'aspectRatio': '1' }} rowSpan={span} colSpan={span} {...props} display="grid" alignItems="center" justifyItems="center">
+    <Portal containerRef={parentRef}>
+      <MotionBox
+        initial={{ opoacity: 0 }}
+        animate={{ opacity: .8 }}
+
+        bg={data.hex}
+
+        position="absolute" zIndex={1}
+        display="grid" justifyItems="center" alignItems="center"
+        top="0" bottom="0" left="0" right="0" mx='auto'
+        pointerEvents="none"
+        width='80vw'
+        height='100%'
+      >
+        <Container>
+        <Heading size="lg">{data.name}</Heading>
+        <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
+        </Container>
+      </MotionBox>
+    </Portal>
+  )
+}
+
+
+const GridSquare = forwardRef(({ children, span = 1, ...props }, ref) => {
+  return (
+    <GridItem ref={ref}
+      w="100%"
+      rowSpan={span} colSpan={span} {...props}
+      display="grid" alignItems="center" justifyItems="center">
       {children}
     </GridItem>
-
   )
-}
+})
+
+const MotionGridSquare = motion(GridSquare);
+const MotionBox = motion(Box)

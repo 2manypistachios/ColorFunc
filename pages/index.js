@@ -7,8 +7,10 @@ import Features from '@/elements/Features'
 import Demo from '@/elements/Demo'
 import LatestPalattes from '@/elements/LatestPalattes'
 import SvgLogoText from '@/components/elements/SVGLogoText';
+import { getPublicSnippets } from '@/utils/Fauna';
 
-export default function Home() {
+export default function Home({ snippets }) {
+
   return (
     <PageContainer title="Color/Func">
       <Flex flexDirection="row" minHeight="94vh" wrap="wrap-reverse" bg={useColorModeValue('gray.50', 'gray.900')}>
@@ -26,7 +28,19 @@ export default function Home() {
       </Flex>
       <Features />
       <Demo />
-      <LatestPalattes />
+      {snippets && <LatestPalattes snippets={snippets} />}
     </PageContainer>
   );
 }
+
+export async function getStaticProps() {
+  try {
+    const snippets = await getPublicSnippets()
+    return { props: {snippets} }
+  } catch (err) {
+    console.warn(err)
+    return { notFound: false }
+  }
+}
+
+
