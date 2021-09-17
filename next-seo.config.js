@@ -13,7 +13,7 @@ const SEO = {
     description,
     images: [
       {
-        url: `colorFuncOG.png`,
+        url: `/colorFuncOG.png`,
         alt: title,
         width: 1199,
         height: 693,
