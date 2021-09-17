@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router'
 
+import { colord } from "colord";
+
 const LatestPalattes = ({ snippets }) => {
   const horizRem = 5, horizMulti = 8
   const ref = useRef()
@@ -99,7 +101,7 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
 }
 
 const variantParent = {
-  visible: { opacity: .8 },
+  visible: { opacity: 1 },
   hidden: { opacity: 0 }
 }
 
@@ -118,19 +120,21 @@ const GridSquareContent = ({ data, parentRef }) => {
         animate="visible"
         variants={variantParent}
 
-        bg={data.hex}
+        bg={colord(data.hex).alpha(.8).toHex()}
 
         position="absolute" zIndex={1}
-        display="grid" justifyItems="center" alignItems="center"
-        top="0" bottom="0" left="0" right="0" mx='auto'
+        display="grid" justifyItems="center" alignItems="flex-start" gridGap="1rem"
+        top="0" 
+        
+        left="0" right="0" mx='auto'
         pointerEvents="none"
         width='80vw'
         height='100%'
       >
         <MotionBox
           variants={variantChild}
-
-          bg="blackAlpha.300" p="1rem" borderRadius="5px" color="white">
+          m="1rem"
+          bg="blackAlpha.600" p="1rem" borderRadius="5px" color="white">
           <Heading size="lg">{data.name}</Heading>
           <Heading size="sm" mb="1rem">by {data.user}</Heading>
           <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
