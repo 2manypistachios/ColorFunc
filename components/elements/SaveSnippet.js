@@ -20,7 +20,7 @@ export default function SnippetForm({ nickname }) {
         body: JSON.stringify({ name, isPublic, user, hex, harmony, loop, brightFunc, satFunc }),
         headers: { 'Content-Type': 'application/json' }
       })
-      router.push('/');
+      router.push('/editor');
     } catch (err) {
       // console.error(err);
     }

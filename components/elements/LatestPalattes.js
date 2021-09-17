@@ -5,13 +5,11 @@ import Highlight from '@/elements/Highlight'
 import setSiteSnippet from '../hooks/setSiteSnippet';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-
+import { useRouter } from 'next/router'
 
 const LatestPalattes = ({ snippets }) => {
   const horizRem = 5, horizMulti = 8
   const ref = useRef()
-
-  console.log("ref: ", ref)
 
   return (
     <Box bg={useColorModeValue("bright", "gray.800")} pos="relative" ref={ref}>
@@ -28,7 +26,6 @@ const LatestPalattes = ({ snippets }) => {
         </GridItem>
 
         <GridItems snippets={snippets} parentRef={ref} />
-
       </Grid>
     </Box>
   )
@@ -36,7 +33,7 @@ const LatestPalattes = ({ snippets }) => {
 
 export default LatestPalattes;
 
-const GridItems = ({snippets, parentRef}) => {
+const GridItems = ({ snippets, parentRef }) => {
   let totalSnippets = snippets;
 
   while (totalSnippets.length < 6) {
@@ -74,8 +71,15 @@ const GridItems = ({snippets, parentRef}) => {
 }
 
 const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
-  const changeAlgo = setSiteSnippet(snippet.data);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter()
+  const changeAlgo = setSiteSnippet(snippet.data);
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    changeAlgo()
+    router.push('/editor')
+  }
 
   return (
     <MotionGridSquare
@@ -83,10 +87,10 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
       onHoverStart={onOpen}
       onHoverEnd={onClose}
 
-      //sx={{ 'aspectRatio': '1' }}
+      sx={{ 'aspectRatio': '1' }}
       width="100%"
       colStart={pos[0]} rowStart={pos[1]} span={pos[2]}
-      bg={snippet.data.hex} onClick={changeAlgo} {...props}
+      bg={snippet.data.hex} onClick={handleClick} {...props}
     >
       {isOpen && <GridSquareContent data={snippet.data} parentRef={parentRef} />}
     </MotionGridSquare>
@@ -94,8 +98,6 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
 }
 
 const GridSquareContent = ({ data, parentRef }) => {
-  console.log(parentRef)
-
   return (
     <Portal containerRef={parentRef}>
       <MotionBox
@@ -111,9 +113,9 @@ const GridSquareContent = ({ data, parentRef }) => {
         width='80vw'
         height='100%'
       >
-        <Container>
-        <Heading size="lg">{data.name}</Heading>
-        <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
+        <Container opacity="1">
+          <Heading size="lg">{data.name}</Heading>
+          <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
         </Container>
       </MotionBox>
     </Portal>
