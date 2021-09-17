@@ -86,7 +86,8 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
       whileHover={{ scale: 1.5 }}
       onHoverStart={onOpen}
       onHoverEnd={onClose}
-
+      
+      cursor="pointer"
       sx={{ 'aspectRatio': '1' }}
       width="100%"
       colStart={pos[0]} rowStart={pos[1]} span={pos[2]}
@@ -107,13 +108,13 @@ const GridSquareContent = ({ data, parentRef }) => {
         bg={data.hex}
 
         position="absolute" zIndex={1}
-        display="grid" justifyItems="center" alignItems="center"
+        display="grid"
         top="0" bottom="0" left="0" right="0" mx='auto'
         pointerEvents="none"
         width='80vw'
         height='100%'
       >
-        <Container opacity="1">
+        <Container opacity="1" bg="blackAlpha.600" p="1rem" borderRadius="5px">
           <Heading size="lg">{data.name}</Heading>
           <Text size="lg">{`A ${data.harmony} scheme starting with ${data.hex}.`}</Text>
         </Container>
