@@ -1,5 +1,5 @@
 import { forwardRef } from '@chakra-ui/system';
-import { Portal, Container, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import { Portal, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 
 import Highlight from '@/elements/Highlight'
 import setSiteSnippet from '../hooks/setSiteSnippet';
