@@ -3,8 +3,8 @@ import PageContainer from '@/layouts/PageContainer';
 import Actions from '@/modules/Actions';
 
 import CircleShift from '@/elements/CircleShift';
-import Features from '@/elements/Features'
-import Demo from '@/elements/Demo'
+import Features from '@/modules/home/Features'
+import Demo from '@/modules/home/Demo'
 import LatestPalattes from '@/modules/snippets/LatestPalattes'
 import SvgLogoText from '@/elements/SVGLogoText';
 import { getPublicSnippets } from '@/utils/fauna';

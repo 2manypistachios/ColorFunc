@@ -4,10 +4,10 @@ import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Grid } from "@chakr
 
 import ColorList from "@/elements/ColorList"
 import PageContainer from "@/layouts/PageContainer"
-import JsonAccordion from "@/modules/JsonAccordion"
-import Shades from "@/modules/Shades"
-import Hues from "@/modules/Hue"
-import Saved from "@/modules/Saved"
+import JsonAccordion from "@/modules/editor/JsonAccordion"
+import Shades from "@/modules/editor/Shades"
+import Hues from "@/modules/editor/Hue"
+import Saved from "@/modules/editor/Saved"
 import Actions from "@/modules/Actions"
 import { genTones } from "src/utils/colors"
 import useStore from "src/store/useStore";
