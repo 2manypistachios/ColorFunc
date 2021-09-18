@@ -8,7 +8,7 @@ import JsonAccordion from "@/modules/editor/JsonAccordion"
 import Shades from "@/modules/editor/Shades"
 import Hues from "@/modules/editor/Hue"
 import Saved from "@/modules/editor/Saved"
-import Actions from "@/modules/Actions"
+import Actions from "@/elements/Actions"
 import { genTones } from "src/utils/colors"
 import useStore from "src/store/useStore";
 import { AnimatePresence, motion } from "framer-motion"

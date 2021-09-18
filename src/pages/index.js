@@ -1,6 +1,6 @@
 import { Container, Heading, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import PageContainer from '@/layouts/PageContainer';
-import Actions from '@/modules/Actions';
+import Actions from '@/elements/Actions';
 
 import CircleShift from '@/elements/CircleShift';
 import Features from '@/modules/home/Features'
