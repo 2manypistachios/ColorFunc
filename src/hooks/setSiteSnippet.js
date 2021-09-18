@@ -1,4 +1,4 @@
-import useStore from "src/store/useStore"
+import useStore from "@/store/useStore"
 
 // Not a real hook
 const SetSiteSnippet = ({ hex, harmony, loop, brightFunc, satFunc }) => {

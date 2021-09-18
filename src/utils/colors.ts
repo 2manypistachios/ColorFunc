@@ -2,7 +2,7 @@ import { compile, MathExpression, EvalFunction } from 'mathjs';
 
 import { extend, Colord } from 'colord';
 import xyzPlugin from 'colord/plugins/xyz';
-import harmoniesPlugin, { HarmonyType } from 'src/utils/harmonies';
+import harmoniesPlugin, { HarmonyType } from '@/utils/harmonies';
 extend([xyzPlugin, harmoniesPlugin]);
 
 //--- Turns Out There's a Plugin That Literally Does Everything Here But Better ---

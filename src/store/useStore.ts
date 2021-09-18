@@ -10,9 +10,9 @@ import { MathExpression } from 'mathjs';
 import { colord, extend, Colord } from 'colord';
 import xyzPlugin from 'colord/plugins/xyz';
 
-import harmoniesPlugin, { HarmonyType } from 'src/utils/harmonies';
+import harmoniesPlugin, { HarmonyType } from '@/utils/harmonies';
 extend([xyzPlugin, harmoniesPlugin]);
-import { genHarmony } from 'src/utils/colors';
+import { genHarmony } from '@/utils/colors';
 
 // * Immer wraps around setter and getter for immutability shortcut
 // ? See https://github.com/pmndrs/zustand#middleware

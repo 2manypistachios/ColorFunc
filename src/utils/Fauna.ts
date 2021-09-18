@@ -5,7 +5,7 @@ const { Map, Paginate, Match, Index, Lambda, Get, Var, Delete, Ref, Collection, 
 const faunaClient = new faunadb.Client({ secret: process.env.FAUNA_SECRET, domain: 'db.us.fauna.com' });
 
 
-import {GenHarmony, GenTones} from 'src/utils/colors'
+import {GenHarmony, GenTones} from '@/utils/colors'
 
 interface FaunaInfo {
   name: string, 

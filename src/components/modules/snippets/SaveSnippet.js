@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { Button, Checkbox, FormControl, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 
-import useStore from "src/store/useStore"
+import useStore from "@/store/useStore"
 
 export default function SnippetForm({ nickname }) {
   const user = nickname;

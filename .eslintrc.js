@@ -5,7 +5,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'prettier', 'next' ],
+  extends: ['eslint:recommended', 'prettier', 'next', 'next/core-web-vitals' ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
