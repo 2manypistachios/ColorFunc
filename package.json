@@ -23,7 +23,7 @@
     "axios": "^0.21.4",
     "babel-plugin-superjson-next": "^0.3.1",
     "colord": "^2.7.0",
-    "faunadb": "^4.4.0",
+    "faunadb": "^4.4.1",
     "framer-motion": "4",
     "immer": "^9.0.6",
     "mathjs": "^9.4.4",
