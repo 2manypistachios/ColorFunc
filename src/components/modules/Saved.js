@@ -3,9 +3,9 @@ import useSWR from 'swr'
 import { useUser } from "@auth0/nextjs-auth0";
 import { Box } from "@chakra-ui/react"
 
-import AuthLogin from "src/components/elements/AuthLogin"
-import Snippet from "src/components/elements/Snippet"
-import SaveSnippet from "src/components/elements/SaveSnippet"
+import AuthLogin from "@/elements/AuthLogin"
+import Snippet from "@/modules/snippets/Snippet"
+import SaveSnippet from "@/modules/snippets/SaveSnippet"
 
 const Saved = () => {
   const { user } = useUser();

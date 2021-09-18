@@ -3,7 +3,7 @@ import { Box, Heading } from "@chakra-ui/react";
 
 import useStore from "src/store/useStore"
 // import { colorGen } from "@/utils/colors";
-import DeleteSnippet from "src/components/elements/DeleteSnippet"
+import DeleteSnippet from "@/modules/snippets/DeleteSnippet"
 
 
 export default function SnippetList({ snippet, snippetDeleted }) {
