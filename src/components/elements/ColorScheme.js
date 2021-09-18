@@ -1,15 +1,14 @@
+import { useEffect } from "react"
 import {
   Box,
   useRadioGroup,
   useRadio,
   VStack,
 } from "@chakra-ui/react"
+import { motion, useAnimation } from 'framer-motion'
 
 import useStore from "@/store/useStore"
 import { hueShifts } from "@/utils/harmonies"
-import { useEffect } from "react"
-
-import { motion, useAnimation } from 'framer-motion'
 
 
 export default function ColorTypes() {

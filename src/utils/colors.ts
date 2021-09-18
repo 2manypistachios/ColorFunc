@@ -5,8 +5,6 @@ import xyzPlugin from 'colord/plugins/xyz';
 import harmoniesPlugin, { HarmonyType } from '@/utils/harmonies';
 extend([xyzPlugin, harmoniesPlugin]);
 
-//--- Turns Out There's a Plugin That Literally Does Everything Here But Better ---
-// Todo: Rework Using Colord
 
 // -- List for English Naming Structure --
 const EnglishIsCool = [

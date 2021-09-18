@@ -1,14 +1,15 @@
 import { Box, Grid, GridItem, Text, useColorModeValue, List, ListItem, ListIcon, Icon } from "@chakra-ui/react";
 
+import { AiOutlineBgColors, AiOutlineFunction, AiFillApi, AiOutlineShareAlt } from "react-icons/ai"
 import { SiTailwindcss } from "react-icons/si"
 import { MdColorLens, } from "react-icons/md"
-import { AiOutlineBgColors, AiOutlineFunction, AiFillApi, AiOutlineShareAlt } from "react-icons/ai"
 import { FaRobot } from "react-icons/fa"
 import { IoIosConstruct } from "react-icons/io"
 import { GiBrain } from "react-icons/gi"
 
 import Highlight from '@/elements/Highlight'
 import ColorBox from '@/elements/ColorBox'
+
 
 const Features = () => {
   const horizRem = 2, horizMulti = 6, vertRem = 8, vertMulti = 4

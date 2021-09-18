@@ -1,11 +1,11 @@
 import Router from 'next/router';
-import NProgress from 'nprogress';
-
-import { UserProvider } from "@auth0/nextjs-auth0";
 
 import { DefaultSeo } from 'next-seo';
+import { UserProvider } from "@auth0/nextjs-auth0";
+
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
+import NProgress from 'nprogress';
 
 import SEO from 'next-seo.config';
 import theme from '@/styles/theme';

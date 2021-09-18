@@ -1,4 +1,5 @@
-import { Heading, Text } from "@chakra-ui/layout"
+import { Heading, Text } from "@chakra-ui/react"
+
 
 const Highlight = ({ children, hl, as = 'heading', ...props }) => {
   if (as === 'text') {

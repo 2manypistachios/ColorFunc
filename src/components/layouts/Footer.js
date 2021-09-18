@@ -1,5 +1,6 @@
 import { Link, Text, Flex } from '@chakra-ui/react';
 
+
 const Footer = () => (
   <>
     <Flex display="footer"

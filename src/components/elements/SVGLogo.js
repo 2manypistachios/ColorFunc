@@ -1,5 +1,6 @@
 import { Icon } from "@chakra-ui/react"
 
+
 const SvgLogo = ({ ...props }) => (
   <Icon width="27.632px" height="35.53px" viewBox="0 0 27.632 35.53" {...props}>
     <g transform="translate(-40.042 -45.304)" fill="#000000" strokeWidth=".26458">

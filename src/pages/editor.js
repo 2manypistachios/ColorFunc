@@ -1,6 +1,7 @@
 // import ErrorBoundary from "@/elements/ErrorBoundary"
 // import Wrapper from "@/layouts/Wrapper"
 import { Flex, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Grid } from "@chakra-ui/react"
+import { AnimatePresence, motion } from "framer-motion"
 
 import ColorList from "@/elements/ColorList"
 import PageContainer from "@/layouts/PageContainer"
@@ -11,7 +12,6 @@ import Saved from "@/modules/editor/Saved"
 import Actions from "@/elements/Actions"
 import { genTones } from "@/utils/colors"
 import useStore from "@/store/useStore";
-import { AnimatePresence, motion } from "framer-motion"
 
 
 export default function ColorPage() {

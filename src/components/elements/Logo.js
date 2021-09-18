@@ -1,8 +1,9 @@
+import Link from 'next/link';
 import { useColorMode, Box } from '@chakra-ui/react'
 import { Text } from '@visx/text';
 import { ParentSize } from '@visx/responsive'
 import { LinearGradient } from '@visx/gradient'
-import Link from 'next/link';
+
 
 const Logo = ({ title, ...props }) => {
   const { colorMode } = useColorMode();

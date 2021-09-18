@@ -1,13 +1,13 @@
-import { forwardRef } from '@chakra-ui/system';
-import { Portal, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-
-import Highlight from '@/elements/Highlight'
-import setSiteSnippet from '@/hooks/setSiteSnippet';
-import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router'
 
+import { forwardRef, Portal, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import { motion } from 'framer-motion';
 import { colord } from "colord";
+
+import Highlight from '@/elements/Highlight'
+import setSiteSnippet from '@/hooks/setSiteSnippet';
+
 
 const LatestPalattes = ({ snippets }) => {
   const horizRem = 5, horizMulti = 8

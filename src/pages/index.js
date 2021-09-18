@@ -1,12 +1,11 @@
 import { Container, Heading, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import PageContainer from '@/layouts/PageContainer';
 import Actions from '@/elements/Actions';
-
 import CircleShift from '@/elements/CircleShift';
+import SvgLogoText from '@/elements/SVGLogoText';
 import Features from '@/modules/home/Features'
 import Demo from '@/modules/home/Demo'
 import LatestPalattes from '@/modules/snippets/LatestPalattes'
-import SvgLogoText from '@/elements/SVGLogoText';
 import { getPublicSnippets } from '@/utils/Fauna';
 
 export default function Home({ snippets }) {

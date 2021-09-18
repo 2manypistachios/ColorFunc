@@ -1,14 +1,14 @@
 import React, { MutableRefObject, useRef } from "react";
 
-
 import p5Types from "p5"; //Import this for typechecking and intellisense
 import { SketchProps } from "react-p5";
+import dynamic from 'next/dynamic'
+
 interface SketchProps2 extends SketchProps {
 	ref?: MutableRefObject<HTMLDivElement>
 }
-import dynamic from 'next/dynamic'
-const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5'), {ssr: false})
 
+const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5'), {ssr: false})
 
 
 interface ComponentProps {
@@ -16,10 +16,7 @@ interface ComponentProps {
 }
 
 let colorsDefault = ["#7209b7", "#3a0ca3", "#4361ee", "#4cc9f0", "#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#073b4c", "#ffffff"]
-
 const ColorBox: React.FC<ComponentProps> = ({ colors = colorsDefault }: ComponentProps) => {
-  // const chakraColors = useToken("colors", ['bright', 'gray.700', ...colors])
-  // const bg = useColorModeValue(chakraColors[0], chakraColors[1])
   const parentRef = useRef();
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {

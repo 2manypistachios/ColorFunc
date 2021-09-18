@@ -1,13 +1,14 @@
 import React, { MutableRefObject, useRef } from "react";
 import { useToken } from "@chakra-ui/react"
 
-
 import p5Types from "p5"; //Import this for typechecking and intellisense
 import { SketchProps } from "react-p5";
+import dynamic from 'next/dynamic'
+
 interface SketchProps2 extends SketchProps {
 	ref?: MutableRefObject<HTMLDivElement>
 }
-import dynamic from 'next/dynamic'
+
 const Sketch: React.ComponentType<SketchProps2> = dynamic(() => import('react-p5'), {ssr: false})
 
 

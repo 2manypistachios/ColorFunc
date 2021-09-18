@@ -1,7 +1,8 @@
-import { useColorMode, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useColorMode, Box } from '@chakra-ui/react';
 
 import Logo from '@/elements/Logo'
+
 
 const PageContainer = ({ children, title, ...props }) => {
   const { pathname } = useRouter();

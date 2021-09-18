@@ -1,6 +1,7 @@
 import {Icon, useColorModeValue, useToken } from '@chakra-ui/react';
 import { LinearGradient } from '@visx/gradient';
 
+
 const SvgLogoText = ({ size = 1, colors = ['#351CAB', '#621A61'], ...props }) => {
   const chakraColors = useToken("colors", ['gray.800', 'bright', 'blackAlpha.900', ...colors])
   const bg = useColorModeValue(chakraColors[0], chakraColors[1])

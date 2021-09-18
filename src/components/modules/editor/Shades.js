@@ -1,5 +1,3 @@
-import { derivative } from 'mathjs';
-
 import { Heading ,
   Input,
   NumberInput,
@@ -12,6 +10,7 @@ import { Heading ,
   FormHelperText,
 } from "@chakra-ui/react"
 
+import { derivative } from 'mathjs';
 import useStore from "@/store/useStore"
 
 
