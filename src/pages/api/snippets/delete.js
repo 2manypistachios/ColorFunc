@@ -1,5 +1,5 @@
 import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0';
-import { deleteSnippet, getSnippetById } from '@/utils/fauna';
+import { deleteSnippet, getSnippetById } from '@/utils/Fauna';
 
 export default withApiAuthRequired(async (req, res) => {
   const session = getSession(req, res);

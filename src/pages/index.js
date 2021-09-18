@@ -7,7 +7,7 @@ import Features from '@/modules/home/Features'
 import Demo from '@/modules/home/Demo'
 import LatestPalattes from '@/modules/snippets/LatestPalattes'
 import SvgLogoText from '@/elements/SVGLogoText';
-import { getPublicSnippets } from '@/utils/fauna';
+import { getPublicSnippets } from '@/utils/Fauna';
 
 export default function Home({ snippets }) {
   return (
