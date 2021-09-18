@@ -4,7 +4,6 @@ import * as Fauna from 'faunadb/src/types/values'
 const { Map, Paginate, Match, Index, Lambda, Get, Var, Delete, Ref, Collection, Create } = query;
 const faunaClient = new faunadb.Client({ secret: process.env.FAUNA_SECRET, domain: 'db.us.fauna.com' });
 
-
 import {GenHarmony, GenTones} from '@/utils/colors'
 
 interface FaunaInfo {
@@ -83,3 +82,4 @@ export const deleteSnippet = async (id: string) => {
     Delete(Ref(Collection('snippets'), id))
   );
 };
+
