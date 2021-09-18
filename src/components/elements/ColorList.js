@@ -1,7 +1,7 @@
 import { Box, Heading, Wrap, WrapItem, useDisclosure, Text } from "@chakra-ui/react"
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion"
 
-import Wrapper from "src/components/layouts/Wrapper"
+import Wrapper from "@/layouts/Wrapper"
 
 
 const ColorList = ({ subColors }) => (

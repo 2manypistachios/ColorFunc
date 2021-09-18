@@ -1,5 +1,4 @@
-import { createSnippet } from 'src/utils/Fauna';
-import { Snippet } from 'src/utils/Fauna';
+import { createSnippet, Snippet } from '@/utils/fauna';
 
 export default async function handler(req, res) {
   const { user, isPublic, hex, harmony, loop, brightFunc, satFunc, name }: Snippet = req.body;

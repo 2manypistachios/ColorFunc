@@ -1,8 +1,8 @@
 import { forwardRef } from '@chakra-ui/system';
 import { Portal, Text, Box, Grid, GridItem, Heading, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 
-import Highlight from 'src/components/elements/Highlight'
-import setSiteSnippet from '../../../hooks/setSiteSnippet';
+import Highlight from '@/elements/Highlight'
+import setSiteSnippet from '@/hooks/setSiteSnippet';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useRouter } from 'next/router'

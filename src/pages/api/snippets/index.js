@@ -1,4 +1,4 @@
-import { getPublicSnippets } from 'src/utils/Fauna';
+import { getPublicSnippets } from '@/utils/fauna';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {

@@ -1,8 +1,8 @@
 import { Heading } from "@chakra-ui/react"
 
-import ColorPicker from "src/components/modules/colorWheel/ColorPicker"
-import ColorScheme from "src/components/elements/ColorScheme"
-import useStore from "src/store/useStore"
+import ColorPicker from "@/modules/colorWheel/ColorPicker"
+import ColorScheme from "@/elements/ColorScheme"
+import useStore from "@/store/useStore"
 
 
 const Hues = () => {

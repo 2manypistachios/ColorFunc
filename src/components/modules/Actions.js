@@ -4,7 +4,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import { motion } from "framer-motion"
 
-import ColorModeButton from 'src/components/elements/ColorModeButton';
+import ColorModeButton from '@/elements/ColorModeButton';
 
 const Actions = ({ switchName }) => {
   const router = useRouter();

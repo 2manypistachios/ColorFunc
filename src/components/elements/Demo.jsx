@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
-import Image from 'src/components/elements/Image'
-import Gif from '/public/colorFuncGif.gif'
+import Image from '@/elements/Image'
+import Gif from '@/public/colorFuncGif.gif'
 
 
 const Demo = () => {

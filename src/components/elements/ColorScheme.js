@@ -5,8 +5,8 @@ import {
   VStack,
 } from "@chakra-ui/react"
 
-import useStore from "src/store/useStore"
-import { hueShifts } from "src/utils/harmonies"
+import useStore from "@/store/useStore"
+import { hueShifts } from "@/utils/harmonies"
 import { useEffect } from "react"
 
 import { motion, useAnimation } from 'framer-motion'

@@ -7,10 +7,9 @@ import Features from '@/elements/Features'
 import Demo from '@/elements/Demo'
 import LatestPalattes from '@/modules/snippets/LatestPalattes'
 import SvgLogoText from '@/elements/SVGLogoText';
-import { getPublicSnippets } from '@/utils/Fauna';
+import { getPublicSnippets } from '@/utils/fauna';
 
 export default function Home({ snippets }) {
-
   return (
     <PageContainer title="Color/Func">
       <Flex flexDirection="row" minHeight="94vh" wrap="wrap-reverse" bg={useColorModeValue('gray.50', 'gray.900')}>

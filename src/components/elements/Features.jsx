@@ -7,8 +7,8 @@ import { FaRobot } from "react-icons/fa"
 import { IoIosConstruct } from "react-icons/io"
 import { GiBrain } from "react-icons/gi"
 
-import Highlight from 'src/components/elements/Highlight'
-import ColorBox from 'src/components/elements/ColorBox'
+import Highlight from '@/elements/Highlight'
+import ColorBox from '@/elements/ColorBox'
 
 const Features = () => {
   const horizRem = 2, horizMulti = 6, vertRem = 8, vertMulti = 4

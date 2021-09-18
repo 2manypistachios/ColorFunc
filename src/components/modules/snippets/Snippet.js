@@ -1,8 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
-// import { colord } from 'colord';
 
-import useStore from "src/store/useStore"
-// import { colorGen } from "@/utils/colors";
+import useStore from "@/store/useStore"
 import DeleteSnippet from "@/modules/snippets/DeleteSnippet"
 
 

@@ -12,7 +12,7 @@ import { Heading ,
   FormHelperText,
 } from "@chakra-ui/react"
 
-import useStore from "src/store/useStore"
+import useStore from "@/store/useStore"
 
 
 export default function Shades() {

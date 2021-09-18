@@ -1,8 +1,7 @@
 import { useColorMode, Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-// import Footer from '../modules/Footer';
 
-import Logo from 'src/components/elements/Logo'
+import Logo from '@/elements/Logo'
 
 const PageContainer = ({ children, title, ...props }) => {
   const { pathname } = useRouter();
