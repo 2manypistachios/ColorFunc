@@ -1,3 +1,18 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "files.exclude": {
+    "yarn.lock": true,
+    "package-lock.json": true,
+    "next-env.d.ts": true,
+    "LICENSE": true,
+    ".prettierignore": true,
+    ".gitignore": true,
+    ".env.local": true,
+    ".babelrc": true,
+    ".vscode": true,
+    ".next": true,
+    ".eslintignore": true,
+    ".eslintrc.js": true,
+    ".prettierrc.js": true
+  }
 }

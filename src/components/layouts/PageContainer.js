@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useColorMode, Box } from '@chakra-ui/react';
 
-import Logo from '@/elements/Logo'
+import SVGLogo from '@/elements/SVGLogo'
 
 
 const PageContainer = ({ children, title, ...props }) => {
@@ -11,7 +11,7 @@ const PageContainer = ({ children, title, ...props }) => {
   switch (pathname) {
     default: return (
       <ContainerWithLogo className="container" {...props}>
-        <Logo title={titleArr} />
+        <SVGLogo title={titleArr} position="absolute" top="5" left="5" />
         {children}
       </ContainerWithLogo>
     )

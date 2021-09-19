@@ -10,9 +10,7 @@ const Demo = () => {
   return (
     <Box bg={useColorModeValue("blue.200", "blue.700")} color={useColorModeValue('blackAlpha.800', 'bright')}>
       <Grid templateColumns="2fr 4fr 2fr" templateRows="auto repeat(3, 1fr)"
-        maxW="80rem"
-        ml="auto"
-        mr="auto"
+        maxW="80rem" ml="auto" mr="auto"
         pl={`calc(${horizRem}rem + (${horizMulti - horizRem}) * ((100vw - 20rem)/ (100 - 20)))`}
         pr={`calc(${horizRem}rem + (${horizMulti - horizRem}) * ((100vw - 20rem)/ (100 - 20)))`}
       >
@@ -27,7 +25,7 @@ const Demo = () => {
           <Text size="sm">Export in minutes.</Text>
         </GridItem>
 
-        <GridItem rowStart={{ base:6, md: 3, lg: 2 }} colStart={{ base: 3 }} w="100%" p=".5rem">
+        <GridItem rowStart={{ base:6, md: 3, lg: 2 }} colStart={{ base: 3 }} w="100%" p=".5rem" pos="relative" zIndex="4">
           <Heading size="sm" mb=".2rem">Progressive labeling</Heading>
           <Text size="sm">Understand your palette</Text>
         </GridItem>

@@ -89,9 +89,6 @@ const SquareSnippet = ({ snippet, parentRef, pos, ...props }) => {
       onHoverStart={onOpen}
       onHoverEnd={onClose}
 
-      cursor="pointer"
-      sx={{ 'aspectRatio': '1' }}
-      width="100%"
       colStart={pos[0]} rowStart={pos[1]} span={pos[2]}
       bg={snippet.data.hex} onClick={handleClick} {...props}
     >
@@ -149,6 +146,8 @@ const GridSquare = forwardRef(({ children, span = 1, ...props }, ref) => {
   return (
     <GridItem ref={ref}
       w="100%"
+      cursor="pointer"
+      sx={{ 'aspectRatio': '1' }}
       rowSpan={span} colSpan={span} {...props}
       display="grid" alignItems="center" justifyItems="center">
       {children}
